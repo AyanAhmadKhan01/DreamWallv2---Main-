@@ -1,0 +1,292 @@
+body {
+    background-color: #060e06;
+}
+
+.back-btn {
+    display: flex;
+    justify-content: center;
+    background-color: #0cbb40;
+    width: 100px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50px;
+   color: #f5faf5;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    line-height: 50px;
+    transition: .3s;
+}
+.back-btn:hover {
+    scale: 1;
+    width: 150px;
+    margin-right: auto;
+}
+
+
+.back-btn::before,
+.back-btn::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+    transition: 0.5s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.back-btn::before {
+    top: -80%;
+    left: -80%;
+    border-radius: 50%;
+}
+
+.back-btn::after {
+    bottom: -80%;
+    right: -80%;
+    border-radius: 50%;
+}
+
+.back-btn:hover {
+   color: #f5faf5;
+    box-shadow: 0px 15px 1000px rgba(0, 255, 127, 0.5);
+}
+
+.back-btn:hover::before {
+    top: 10%;
+    left: 10%;
+    transform: rotate(0deg);
+}
+
+.back-btn:hover::after {
+    bottom: 10%;
+    right: 10%;
+    transform: rotate(0deg);
+}
+
+.back-btn:hover .fa-left-long {
+    translate: 0px 0px;
+    padding-right: 0px;
+    scale: 1.1;
+}
+
+.back-btn .fa-left-long {
+    line-height: 50px;
+    margin-right: 10px;
+    transition: .3s;
+    padding-right: 250px;
+    translate: 200px 0px;
+    font-size: 32px;
+}
+
+
+.meme-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5faf5;
+    text-align: center;
+    border-radius: 200px;
+    width: 1375px;
+    margin: auto;
+    height: 550px;
+    margin-top: -50px;
+    margin-bottom: 75px;
+  }
+  
+.meme-soon-mini-container .fa-face-laugh-beam {
+    font-size: 146px;
+    background-color: #0cbb40;
+    padding: 10px 20px;
+    border-radius: 20px;
+    translate: 0px -89px;
+    transition: .3s;
+    outline: 5px solid #18a342;
+    scale: 1.1;
+    box-shadow: 15px 15px 0px #0cbb40;
+  }
+  
+  .meme-soon-mini-container .fa-face-laugh-beam:hover {
+    outline: 2px solid #f0b60a;
+    scale: 1;
+    box-shadow: 0px 0px 0px #0cbb40;
+  }
+  
+  .meme-soon-mini-container .fa-face-smile-wink {
+    font-size: 146px;
+    background-color: #ffcc00;
+    padding: 10px 20px;
+    border-radius: 20px;
+    translate: 0px -89px;
+    transition: .3s;
+    outline: 5px solid #ff9900;
+    scale: 1.1;
+    box-shadow: 15px 15px 0px #ffcc00;
+  }
+  
+  .meme-soon-mini-container .fa-face-smile-wink:hover {
+    outline: 2px solid #ff9900;
+    scale: 1;
+    box-shadow: 0px 0px 0px #ffcc00;
+  }
+  
+  .meme-soon-mini-container .fa-face-grin-tongue-squint {
+    font-size: 146px;
+    background-color: #0066cc;
+    padding: 10px 20px;
+    border-radius: 20px;
+    translate: 0px -89px;
+    transition: .3s;
+    outline: 5px solid #0057b8;
+    scale: 1.1;
+    box-shadow: 15px 15px 0px #0066cc;
+  }
+  
+  .meme-soon-mini-container .fa-face-grin-tongue-squint:hover {
+    outline: 2px solid #0057b8;
+    scale: 1;
+    box-shadow: 0px 0px 0px #0066cc;
+  }
+  
+
+  .meme-soon-mini-container .fa-face-dizzy {
+    font-size: 146px;
+    background-color: #ff3333;
+    padding: 10px 20px;
+    border-radius: 20px;
+    translate: 0px -89px;
+    transition: .3s;
+    outline: 5px solid #ff0000;
+    scale: 1.1;
+    box-shadow: 15px 15px 0px #ff3333;
+  }
+  
+  .meme-soon-mini-container .fa-face-dizzy:hover {
+    outline: 2px solid #ff0000;
+    scale: 1;
+    box-shadow: 0px 0px 0px #ff3333;
+  }
+  
+  .meme-soon-mini-container .fa-face-angry {
+    font-size: 146px;
+    background-color: #ff6600;
+    padding: 10px 20px;
+    border-radius: 20px;
+    translate: 0px -89px;
+    transition: .3s;
+    outline: 5px solid #cc5200;
+    scale: 1.1;
+    box-shadow: 15px 15px 0px #ff6600;
+  }
+  
+  .meme-soon-mini-container .fa-face-angry:hover {
+    outline: 2px solid #cc5200;
+    scale: 1;
+    box-shadow: 0px 0px 0px #ff6600;
+  }
+  
+  .meme-soon-mini-container .fa-face-grin-stars {
+    font-size: 146px;
+    background-color: #ffcc66;
+    padding: 10px 20px;
+    border-radius: 20px;
+    translate: 0px -89px;
+    transition: .3s;
+    outline: 5px solid #ffb84d;
+    scale: 1.1;
+    box-shadow: 15px 15px 0px #ffcc66;
+  }
+  
+  .meme-soon-mini-container .fa-face-grin-stars:hover {
+    outline: 2px solid #ffb84d;
+    scale: 1;
+    box-shadow: 0px 0px 0px #ffcc66;
+  }
+  
+  .meme-soon-mini-container {
+    background-color: #2b271a;
+    padding: 20px;
+    border-radius: 40px;
+    border:  2px solid #f0b60a;
+    box-shadow: 0px 0px 1000px #f0b60a;
+    height: 2px;
+    cursor: pointer;
+  }
+  
+  .meme-soon-mini-container h1 {
+    translate: 0px -89px;
+    font-size: 56px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: -2px;
+    padding: 40px 20px;
+    color: #f5faf5;
+    margin-top: 0px;
+    text-align: left;
+  }
+  
+  .meme-soon-mini-container span {
+    color: #f0b60a;
+  }
+  
+
+  .live-wallpaper-wallpaper {
+    width: 900px;
+    border-radius: 20px;
+    margin-bottom: -30px;
+    border-radius: 10px;
+  }
+
+.live-wallpaper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  max-width: 1400px;
+ width: 1380px;
+  height: 110vh;
+}
+
+.live-wallpaper h1 {
+  font-size: 46px;
+  letter-spacing: -2px;
+  font-weight: 550;
+  color: #f5faf5;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.live-wallpaper span {
+  color: #0cbb40;
+}
+
+/* Update Page */
+
+.Updates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 800px;
+  margin: auto;
+  color: #f5faf5;
+}
+
+.Updates h1 {
+  font-size: 56px;
+  margin-top: 50px;
+}
+
+.Updates h2 {
+  text-align: center;
+  font-weight: 500;
+}
+
+.Updates p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.Updates a {
+  color: #0cbb40;
+}

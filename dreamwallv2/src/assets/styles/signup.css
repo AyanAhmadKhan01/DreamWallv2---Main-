@@ -1,0 +1,77 @@
+.register-subsection {
+    display: flex;
+    justify-content: center;
+  }
+  .register-section {
+    text-align: center;
+  }
+  .register-section h1 {
+text-align: center;
+text-transform: uppercase;
+color: #f5faf5;
+font-size: 45px;
+font-weight: 450;
+letter-spacing: 20px;
+word-spacing: 5px;
+border-radius: 60%;
+margin-top: 140px;
+  }
+
+  .register-section h5 {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .register-section h3 {
+      color: #0A1C10;
+      font-weight: 400;
+      font-size: 17px;
+  }
+
+
+  .register-section a {
+    color: #33D864 ;
+    letter-spacing: 2px;
+  }
+
+  #password {
+    margin-bottom: 15px;
+  }
+
+  .register-section #password, #email, #username {
+background-color: var(--bg);
+color: var(--text);
+width: 400px;
+height: 10px;
+border: 1px solid grey;
+border-radius: 6px;
+outline: none;
+padding: 20px;
+letter-spacing: 2px;
+margin-top: 20px;
+}
+
+.register-section #password:focus, #email:focus, #username:focus {
+  border: 2px solid #33D864;
+}
+
+#submit-btn{
+background-color: #43F378;
+color:  #0A1C10;
+font-size: 18px;
+font-weight: 470;
+letter-spacing: 12px;
+text-transform: uppercase;
+border: 2px solid rgba(255, 255, 255, 0.5);
+border-radius: 30px;
+padding: 8px 95px 8px 95px;
+transition: .4s;
+cursor: pointer;
+margin-top: 10px;
+translate: 0px -20px;
+}
+
+#sumbit-btn:hover {
+background-color: #33D864;
+}

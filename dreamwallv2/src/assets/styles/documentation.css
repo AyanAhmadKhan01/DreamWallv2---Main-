@@ -1,0 +1,47 @@
+:root {
+    --text: #f5faf5;
+  --background: #060e06;
+  --primary: #3fb83d;
+  --secondary: #20761e;
+  --accent: #1e9c1c;
+    }
+    
+.documentation-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    height: 100vh;
+}
+
+.left-documentation {
+    width: 300px;
+    color: #f5faf5;
+    margin: 0px 40px 0px 0px;
+   
+}
+
+.left-documentation h3 {
+    font-size: 20px;
+    letter-spacing: -1px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 2px;
+    padding: 12px 10px;
+    border-radius: 10px;
+    position: relative;
+    color: #f5faf5;
+}
+
+.left-documentation .fas {
+margin-right: 5px;
+color: rgba(255, 255, 255, 0.8);
+}
+
+.left-documentation h3:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.right-documentation {
+    width: 1100px;
+    color: #f5faf5;
+}

@@ -1,0 +1,65 @@
+.login-subsection {
+    display: flex;
+    justify-content: center;
+  }
+  .login-section {
+    text-align: center;
+  }
+  .login-section h1 {
+    text-align: center;
+text-transform: uppercase;
+color: #f5faf5;
+font-size: 45px;
+font-weight: 450;
+letter-spacing: 15px;
+word-spacing: 5px;
+border-radius: 60%;
+margin-top: 140px;
+  }
+
+
+  .login-section h3 {
+    color: #33D864 ;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+
+  #password {
+    margin-bottom: 15px;
+  }
+
+  .login-section #password,#username {
+background-color: var(--bg);
+color: var(--text);
+width: 400px;
+height: 10px;
+border: 1px solid grey;
+border-radius: 6px;
+outline: none;
+padding: 20px;
+letter-spacing: 2px;
+margin-top: 17px;
+}
+
+.login-section #password:focus {
+  border: 2px solid #33D864;
+}
+
+#login-btn {
+  background-color: #43F378;
+  color:  #0A1C10;
+  font-size: 18px;
+  font-weight: 470;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 6px 125px 6px 125px;
+  transition: .4s;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#login-btn:hover {
+background-color: #33D864;
+}

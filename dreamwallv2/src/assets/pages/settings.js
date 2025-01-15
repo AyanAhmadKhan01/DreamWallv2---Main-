@@ -33,12 +33,12 @@ const handleLogout = () => {
                 <div className="right-settings-section">
                     <div className="right-setting-box">
                     <i class="fas fa-signature"></i>
-                    <h2>Change Name</h2>
+                    <h4>Change Name</h4>
                     <input type="text" />
                     </div>
                     <div className="right-setting-box">
                     <i class="fas fa-unlock"></i>
-                    <h2>Change Password</h2>
+                    <h4>Change Password</h4>
                     <input type="text" />
                     </div>
                     <div className="right-setting-box">
@@ -67,7 +67,7 @@ const handleLogout = () => {
              <hr className="profile-line"/>
              <p className="profile-subheading">Profile Banner</p>
              <label htmlFor="profile-banner" className="profile-banner-btn">Change Banner <i class="fas fa-magic"></i></label>
-             <input type="file" id="profile-banner" style={{display: 'none'}}/>
+             <input type="input" id="profile-banner"/>
              <hr className="profile-line"/>
              <p className="profile-subheading">About Me</p>
              <div className="text-area">

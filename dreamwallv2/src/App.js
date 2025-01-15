@@ -13,6 +13,8 @@ import './assets/styles/temp.css'
 import './assets/styles/settings.css'
 import './assets/styles/analytics.css'
 import './assets/styles/documentation.css'
+import './assets/styles/community.css'
+
 
 function App() {
   const token = Cookies.get('token');

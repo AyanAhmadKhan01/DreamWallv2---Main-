@@ -339,44 +339,6 @@ app.get('/api/wallpaper/view', async (req, res) => {
    }
 });
 
-// app.put('/api/wallpaper/view', async (rea, res) => {
-//   const {
-//     wallpaperName,
-//     genre,
-//     downloads,
-//     comment,
-//     linkCopy,
-//     uploaderName,
-//     uploadDate,
-//     resolution,
-//     tags,
-//     fileType,
-//     deviceTags,
-//   } = req.body;
-//   try {
-//     const wallpaper = await Wallpaper.findOne({ linkCopy: linkCopy});
-
-//     if(!wallpaper) {
-//       return res.status(404).json({message: 'Wallpaper not found'});
-//     }
-//     wallpaper.wallpaperName = wallpaperName;
-//     wallpaper.imgLink = imgLink;
-//     wallpaper.genre = genre;
-//     wallpaper.downloads = downloads;
-//     wallpaper.comment = comment;
-//     wallpaper.uploadDate = uploadDate;
-//     wallpaper.uploaderName = uploaderName;
-//     wallpaper.resolution = resolution;
-//     wallpaper.tags = tags;
-//     wallpaper.fileType = fileType;
-//     wallpaper.deviceTags = deviceTags;
-
-//     await wallpaper.save();
-//     return res.status(200).json({message: 'Successfully Updated Wallpaper Page'});
-//   } catch (err) {
-//     return res.status(500).json({message: 'Failed to Update Wallpaper Page', error: err.message});
-//   }
-// })
 
 app.get('/api/wallpaper/view', async (req, res) => {
   try {
@@ -575,6 +537,16 @@ try {
 } catch (err) {
   res.status(500).json({message: 'Error Calculating analytics'})
 }
+})
+
+
+app.get('/api/community', async (req, res) => {
+  try {
+    const communityData = await User.find().select('-_id -email -password');
+    res.json(communityData);
+  } catch (err) {
+    return res.status(500).json({message: 'Server Failed'})
+  }
 })
 
 app.get('/api/user/profile/data', userProfileData)

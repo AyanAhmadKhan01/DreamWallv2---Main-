@@ -8,9 +8,6 @@ function WallpaperPage() {
     const [authenticate, setAuthenticate ] = useState(null);
     const timers = useRef([]);
 
-
-     
-
     useEffect(() => {
       const authenticateUser =  async () => {   
       try {

@@ -1,6 +1,5 @@
-import { useState, useEffect,  useRef } from "react";
+import { useState, useEffect,  useRef} from "react";
 import { Link } from "react-router-dom";
-import WallpaperPage from "./WallpaperPage";
 
 function ExplorePage() {
   return (
@@ -9,6 +8,7 @@ function ExplorePage() {
     </>
   );
 }
+
 
 export default ExplorePage;
 
@@ -23,8 +23,7 @@ function Explore() {
       const [isAnimating, setIsAnimating] = useState(false);
       const [isButtonDisabled, setIsButtonDisabled] = useState(false); 
     
-    
-    
+  
       const handleCopyAlert = () => {
         setIsAnimating(false); 
         timers.current.push(

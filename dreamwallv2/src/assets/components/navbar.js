@@ -106,10 +106,10 @@ function Navbar() {
         <ul className="dropdown-menu">
         <h2>Where to start</h2>
         <Link to='/documentation'><li><i className="fas fa-book"></i> Introduction</li></Link>
-        <Link to='/documentation'><li><i className="fas fa-upload"></i> Upload Guide</li></Link>
-        <Link to='/documentation'><li><i className="fas fa-user-plus"></i> Create Account</li></Link>
-        <Link to='/documentation'><li><i className="fas fa-cogs"></i> Profile Settings</li></Link>
-        <Link to='/documentation'><li><i className="fas fa-question-circle"></i> FAQ</li></Link>
+        <Link to='/documentation/howtoupload'><li><i className="fas fa-upload"></i> Upload Guide</li></Link>
+        <Link to='/documentation/createaccount'><li><i className="fas fa-user-plus"></i> Create Account</li></Link>
+        <Link to='/documentation/profilesettings'><li><i className="fas fa-cogs"></i> Profile Settings</li></Link>
+        <Link to='/documentation/faq'><li><i className="fas fa-question-circle"></i> FAQ</li></Link>
        </ul>
      </li>
 

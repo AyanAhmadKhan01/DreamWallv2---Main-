@@ -1,0 +1,161 @@
+:root {
+    --text: #f5faf5;
+  --background: #060e06;
+  --primary: #3fb83d;
+  --secondary: #20761e;
+  --accent: #1e9c1c;
+    }
+    
+
+.community-container {
+    display: flex;
+    justify-content: center;
+    color: #f5faf5 ;
+    height: 150vh;
+}
+
+.dreamwall-banner {
+    width: 1200px;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-top: 50px;
+    box-shadow: 0px 0px 20px black;
+}
+
+.community-container h1 {
+    text-align: center;
+    font-size: 96px;
+}
+
+.community-container h2 {
+    margin: 0px 25px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.community-container span {
+    color: #0cbb40;
+}
+
+.community-container input {
+    font-size: 18px;
+    width: 500px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 0px;
+    color: #f5faf5;
+    outline: 0;
+    margin: 10px 20px;
+}
+
+.community-container input:focus-within {
+    outline: 3px solid #0cbb40; 
+}
+
+.community-profile-container {
+    width: 500px;
+    margin-left: auto;
+    translate: -50px -120px;
+    text-align: center;
+}
+
+.community-profile-container .banner-community {
+height: 120px;
+width: 500px;
+object-fit: cover;
+border-radius: 20px 20px 0px 0px;
+}
+
+.community-profile-container .logo-community {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    translate: 0px -60px;
+    border-radius: 40px;
+}
+
+.community-profile-container h2 {
+    translate: 0px -60px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #f5faf5;
+}
+
+.community-profile-container h3 {
+    translate: 0px -65px;
+    font-size: 16px;
+    font-weight: 350;
+    letter-spacing: -1px;
+    color: #f5faf5;
+}
+
+.community-profile {
+   background-color: rgba(255, 255, 255, 0.05);
+   margin-top: 16px;
+   border-radius: 20px;
+   transition: .3s;
+   cursor: pointer;
+   border: 3px solid rgba(255, 255, 255, 0.05);
+   height: 260px;
+   width: 500px;
+}
+
+.community-profile:hover {
+    scale: 1.030;
+}
+
+.no-profile-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #f5faf5;
+    text-align: center;
+    border-radius: 200px;
+    width: 1170px;
+    height: 400px;
+    margin-top: 50px;
+  }
+  
+  
+  
+  .no-profile-found-mini-container .fa-user-alt {
+    font-size: 146px;
+    background-color: #060e06;
+    padding: 20px 30px;
+    border-radius: 20px;
+    translate: 0px -89px;
+    transition: .3s;
+    outline: 10px solid #0cbb40;
+    scale: 1.1;
+    box-shadow: 20px 20px 0px #060e06;
+    margin: 0px 0px 30px 0px;
+  }
+  
+  .no-profile-found-container:hover .fa-user-alt {
+    outline: 1px solid #0cbb40;
+    scale: 1;
+    box-shadow: 0px 0px 0px #060e06;
+  }
+  
+  
+  .no-profile-found-mini-container {
+  background-color: #0a1c10;
+  padding: 20px;
+  border-radius: 40px;
+  border:  2px solid #0cbb40;
+  box-shadow: 0px 0px 1000px #0cbb40;
+  height: 2px;
+  }
+  
+  .no-profile-found-mini-container h1 {
+    translate: 0px -89px;
+  }
+  .no-profile-found-mini-container span {
+    color: #0cbb40;
+  }

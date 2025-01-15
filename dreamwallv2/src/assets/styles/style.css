@@ -117,7 +117,7 @@
 
 
   .account-menu h3 {
-    color: #363434;
+    color: rgba(255, 255, 255, 0.6);
     font-weight: 550;
     padding: 20px 0px 8px 20px;
     font-size: 18px;
@@ -155,7 +155,7 @@
 
 
   .dropdown-menu h2 {
-    color: #363434;
+    color: rgba(255, 255, 255, 0.6);
     font-weight: 550;
     padding: 20px 0px 8px 20px;
     font-size: 18px;
@@ -188,11 +188,6 @@
     background-color: transparent ; 
   }
 
-  .getting-started-navbar .dropdown-menu li:hover {
-    background-color: var(--prime);
-  }
-
-
 .getting-started-navbar:hover .fas.fa-chevron-down {
   transform: rotate(180deg);
   transition: transform 0.3s;
@@ -201,12 +196,10 @@
 .user-logo {
   width: 50px; 
   height: 50px; 
-  object-fit: contain;
+  object-fit: cover;
   background-color: transparent;
-  border-radius: 50%; 
-  translate: -10px -13px; 
-  border: 1px solid #0a1c10;
-  background-color: #33d864;
+  border-radius: 30px; 
+  translate: -10px -12px; 
   transition: .3s;
   cursor: pointer;
 }

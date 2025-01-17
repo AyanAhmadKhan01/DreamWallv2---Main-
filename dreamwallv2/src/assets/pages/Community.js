@@ -1,5 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import { Link } from "react-router-dom";
+
+export const TopCreators = createContext();
+
+export const TopUser = (props) => {
+  const [communityProfile, setCommunityProfile ] = useState([]);
+
+
+useEffect(() => {
+    const fetchCommunityData = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/api/community',{
+                method: 'GET',
+            });
+            const data = await response.json();
+            setCommunityProfile(data);
+        } catch (err){
+            console.error('Failed To Fetch Community Data')
+        }
+    }
+    fetchCommunityData()
+},[])
+return(
+  <TopCreators.Provider value={communityProfile}>
+  {props.children}
+</TopCreators.Provider>
+)
+}
 
 function Community () {
     document.title = `Dream Wall V2 - Community`
@@ -26,7 +53,7 @@ useEffect(() => {
 const [currentPage, setCurrentPage] = useState(1);
 const [userSearch, setUserSearch] = useState('');
 
-const ProfilePerPage = 3;
+const ProfilePerPage = 10;
 
 const handleUserSearch = (event) => {
     const search = event.target.value;

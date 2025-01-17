@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { TopCreators } from './Community';
 
 
 function Home() {
@@ -7,10 +8,9 @@ function Home() {
         <>
         <Hero />
         <BentoBox />
-        {/* <Wallpaper/> */}
-        {/* <GettingStarted /> */}
-        {/* <ImageSlider /> */}
-        {/* <AboutCards /> */}
+        <NewWallpaper />
+        <TopCreator />
+        <Promotion />
         </>
     )
 };
@@ -119,7 +119,17 @@ function BentoBox() {
                     <h3>Post</h3>
                     <h3>About</h3>
                     </div>
-                    
+                    <div className="bento-wallpaper-container">
+                    <div className="bento-wallpapers">
+                        <img src="/img/Wallpapers/Wallpaper 5.jpg"/>
+                    </div>
+                    <div className="bento-wallpapers">
+                        <img src="/img/Wallpapers/Wallpaper 7.jpg"/>
+                    </div>
+                    <div className="bento-wallpapers">
+                        <img src="/img/Wallpapers/Wallpaper 10.jpg"/>
+                    </div>
+                    </div>
                    </div>
                 </div>
             </div>
@@ -129,23 +139,37 @@ function BentoBox() {
 }
 
 
-
-function Wallpaper() {
+function NewWallpaper() {
     return(
         <>
-        <div className="wallpaper-container">
-            <div className="wallpaper-section">
-                <div className="wallpaper-mini-section">
-                <h1>Top Rated Wallpaper</h1>
-                <p>Explore wallpapers loved by our community! Our top-rated collection is shaped by users like you, with each wallpaper climbing the ranks based on community favorites. Discover trending styles, unique art, and stunning visuals that have captured the most likes.</p>
-                <button className="signup-button">
-                       Sign Up & Share Your Wallpapers <i className="fas fa-arrow-right"></i>
-                     </button>
+        <div className="latest-wallpaper-container">
+        <h1>Latest New Wallpaper</h1>
+            <div className="latest-walllpaper-section">
+                <div className="latest-wallpaper-box">
+                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
+                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
                 </div>
-                <div className="wallpaper-mini-section"> 
-                    <img src="img\Wallpapers\Wallpaper 1.jpg" alt="wallpaper" />
-                    <img src="img\Wallpapers\Wallpaper 6.jpg" alt="wallpaper" />
+                <div className="latest-wallpaper-box">
+                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
+                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
                 </div>
+                <div className="latest-wallpaper-box">
+                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
+                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
+                </div>
+                <div className="latest-wallpaper-box">
+                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
+                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
+                </div>
+                <div className="latest-wallpaper-box">
+                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
+                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
+                </div>
+                <div className="latest-wallpaper-box">
+                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
+                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>99 Downloads</span></h2>
+                </div>
+                <button className='explore-all-wallpapers'><i class="fas fa-rocket"></i> Explore all wallpapers</button>
             </div>
         </div>
         </>
@@ -153,137 +177,112 @@ function Wallpaper() {
 }
 
 
-function GettingStarted() {
+function TopCreator() {
+    const TopMember = useContext(TopCreators);
+    console.log(TopMember)
+  
+    const carouselRef = useRef(null);
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+  
+    const handleMouseDown = (e) => {
+      isDragging = true;
+      carouselRef.current.classList.add("dragging");
+      startX = e.pageX - carouselRef.current.offsetLeft;
+      scrollLeft = carouselRef.current.scrollLeft;
+  
+     
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('mouseleave', handleMouseLeave);
+    };
+  
+    const handleMouseMove = (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carouselRef.current.offsetLeft;
+      const walk = (x - startX) * 0.8; 
+      carouselRef.current.scrollLeft = scrollLeft - walk;
+    };
+  
+    const handleMouseUp = () => {
+      isDragging = false;
+      carouselRef.current.classList.remove("dragging");
+  
+      
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  
+    const handleMouseLeave = () => {
+      isDragging = false;
+      carouselRef.current.classList.remove("dragging");
+  
+      
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  
+
+    const handleImageDragStart = (e) => {
+        e.preventDefault(); 
+      };
+
+    return (
+      <div className="top-creators">
+        <h1>
+          <span>
+            <i className="fas fa-trophy"></i>
+          </span>{" "}
+          Top Creators in <span>last 24 hours</span>
+        </h1>
+        <div
+          className="top-creator-section"
+          ref={carouselRef}
+          onMouseDown={handleMouseDown}
+        >
+          {TopMember.map((members, index) => (
+            <div key={index} className="top-creator-box">
+              <img
+                src={members.profileLogo}
+                alt={`creator-${index}`}
+                onDragStart={handleImageDragStart} 
+              />
+              <h2>{members.username}</h2>
+              <h3>
+                Downloads {}
+                <span>
+                  <i className="far fa-arrow-alt-circle-down"></i> 66
+                </span>
+              </h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+
+  function Promotion() {
     return(
         <>
-          <div className="getting-section">
-            <div className="getting-started">
-                <h1>Getting Started</h1>
-                <h2>How To Upload</h2>
-                <div className="getting-started-container">
-                <div className="dreamwall-tutorial">
-                    <div className="dreamwall-tutorial">
-                <video src="Dream Wall.mp4" loop muted poster="img\dream wall 1.png" id="myVideo"></video>
-            </div>
-        </div>
-    </div>
+        <div className="promotion-container">
+        <h1>More Works from the <span>Creator of DreamWall</span> </h1>
+            <div className="promotion-section">
+                <div className="promotion-box">
+                    <h2>Chatting App <i class="fab fa-rocketchat"></i></h2>
+                </div>
+                <div className="promotion-box">
+                    <h2>Portfolio <i class="fas fa-briefcase"></i></h2>
+                </div>
+                <div className="promotion-box">
+                    <h2>Soon! <i class="far fa-gem"></i></h2>
+                </div>
             </div>
         </div>
         </>
     )
-};
-
-function ImageSlider() {
-
-    const SliderImage = [
-        {id: 1, src:'/img/Slides/1.jpg'},
-        {id: 2, src:'/img/Slides/2.png'},
-        {id: 3, src:'/img/Slides/3.png'},
-        {id: 4, src:'/img/Slides/4.png'},
-        {id: 5, src:'/img/Slides/5.png'},
-        {id: 6, src:'/img/Slides/6.jpg'},
-        {id: 7, src:'/img/Slides/7.png'},
-        {id: 8, src:'/img/Slides/8.png'},
-        {id: 9, src:'/img/Slides/9.jpg'},
-        {id: 10, src:'/img/Slides/10.png'},
-        {id: 11, src:'/img/Slides/11.jpg'},
-    ]
-
-    return(
-        <>
-         <div className="feature">
-            <h2>Top Rated Wallpaper</h2>
-            <h4 className="border-bottom"></h4>
-            <div className="feature-section">
-                <div id="slider-container">
-                  {SliderImage.map((image) => (
-                    <img src={image.src} id="slider-img" alt={`Slider Image ${image.id}`} />
-                  ))}
-                  </div>
-        </div>
-    </div>
-        </>
-    )
-}
-
-
-function AboutCards() {
-    return(
-        <>
-        <section className="about-page">
-    <div className="about-cards">
-
-        <div className="about">
-            <div className="about-flex-container">
-            <div className="about-section">
-                <h1>Our Mission</h1>
-                <p>At Dream Wall, we believe that beautiful digital decorations can transform screens and uplift moods. Our mission is to build a vibrant community of wallpaper enthusiasts who can explore, share, and inspire each other through stunning visuals.</p>
-                <br/>
-                <p>We aim to provide a platform where creativity knows no bounds, allowing everyone to find wallpapers that reflect their unique style. Here, artists can showcase their work to a global audience. By fostering a space for artistic expression and connection, we hope to add a touch of beauty and inspiration to everyday life.</p>
-                <br/>
-                <p>Join us in our mission to make every screen a masterpiece and every moment a bit more beautiful.</p>
-            </div>
-            <div className="about-section">
-              <img src="img\50194.jpg" className="our-misson"/>
-            </div>
-        </div>
-        </div>
-
-    </div>
-    <div className="about-cards">
-    <div className="what-we-offer-container">
-        <h1>What We Offer</h1> 
-        <p id="offer-text">At Dream Wall, we provide a comprehensive platform for wallpaper enthusiasts. Whether you're looking to explore, download, or upload stunning wallpapers, our offerings cater to all your needs.</p>
-
-    </div> 
-    </div>
-    <div className="about-cards">
-
-        <div className="what-we-offer-container">
-            <div className="what-we-offer">
-                <div className="text-offer">
-                <div className="what-we-offer-section gallery-image">
-                 <img src="img\design.png"/>
-            </div>
-            <p className="img-text">Dive into our curated collection of high-definition and 4K wallpapers. Discover serene landscapes, captivating cityscapes, and mesmerizing abstract art—all designed to transform your digital space.</p>
-        </div>
-        <div className="text-offer">
-            <div className="what-we-offer-section gallery-image">
-                <img src="img/image.png"/>
-            </div>
-            <p>Enhance your screens with our collection of high-quality wallpapers. Browse and download effortlessly to bring beauty and inspiration to your devices.
-            </p>
-            </div>
-            <div className="text-offer">
-            <div className="what-we-offer-section gallery-image">
-                <img src="img\design 2.png" className="card-gallery-img"/>
-            </div>
-            <p className="img-text">Create an account on Dream Wall to start uploading and sharing your stunning wallpapers. Join a vibrant community of creators and showcase your artistic talents to wallpaper enthusiasts worldwide.
-            </p>
-            </div>
-            </div>
-        </div> 
-
-    </div>
-    <div className="about-cards">
-        <div className="join-container">
-            <h1>Join Us Now</h1>
-            <p className="img-text">Embark on your journey with Dream Wall today. Join our vibrant community of wallpaper enthusiasts, where creativity knows no bounds. Sign up now to discover, share, and inspire with stunning digital art.</p>
-            <h5><Link to={'/signup'}>Sign Up</Link></h5>
-        <div className="join-section">
-            <div className="join-sub-section">
-                <i className="fab fa-discord" data-url="https://discord.gg/z7agFHxwJT" data-target="_blank" onclick="openLink(this)"></i>
-            </div>
-            <div className="join-sub-section" data-url="https://github.com/AyanAhmadKhan01" data-target="_blank" onclick="openLink(this)">
-                <i className="fab fa-github"></i>
-            </div>
-            <div className="join-sub-section" data-url="https://www.linkedin.com/in/ayanahmadkhan/" data-target="_blank" onclick="openLink(this)">
-                <i className="fab fa-linkedin"></i>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-        </>
-    )
-};
+  }

@@ -14,16 +14,18 @@ import './assets/styles/settings.css'
 import './assets/styles/analytics.css'
 import './assets/styles/documentation.css'
 import './assets/styles/community.css'
-
+import { TopUser } from './assets/pages/Community';
 
 function App() {
   const token = Cookies.get('token');
   return (
+    <TopUser>
     <Router>
       <Navbar/>
       <HomeRouter />
       <Footer/>
       </Router>
+      </TopUser>
   );
 }
 

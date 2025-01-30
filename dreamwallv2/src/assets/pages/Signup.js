@@ -13,7 +13,7 @@ function SignUp() {
 
   useEffect(() => {
     const checkLoginStatus = async () => {
-      const response = await fetch('http://localhost:4000/api/user/data', {
+      const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

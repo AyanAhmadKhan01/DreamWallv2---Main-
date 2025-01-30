@@ -22,7 +22,7 @@ const [isUpdated, setIsUpdated] = useState({
 
 const userdata = async() => {
     try {
-        const response = await fetch(`http://localhost:4000/api/user/profile?profileUrl=${profile.profileUrl}`, {
+        const response = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile?profileUrl=${profile.profileUrl}`, {
             method: 'POST',
             body: JSON.stringify(isUpdated),
             headers: { 'Content-Type': 'application/json' },
@@ -168,7 +168,7 @@ const handleAccountCancel = async() => {
 }
 
 const [deleteTimer, setDeleteTimer] = useState("");
-const [isDeleteActive, setIsDeleteActive] = useState(false); // Tracks if delete is active
+const [isDeleteActive, setIsDeleteActive] = useState(false); 
 
 useEffect(() => {
   if (!user?.deleteAt) {

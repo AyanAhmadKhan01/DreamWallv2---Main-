@@ -16,9 +16,11 @@ import './assets/styles/documentation.css'
 import './assets/styles/community.css'
 import { TopUser } from './assets/pages/Community';
 
+
 function App() {
   const token = Cookies.get('token');
   return (
+   
     <TopUser>
     <Router>
       <Navbar/>
@@ -26,6 +28,7 @@ function App() {
       <Footer/>
       </Router>
       </TopUser>
+
   );
 }
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cron = require('node-cron');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
@@ -14,6 +15,7 @@ const { console } = require('inspector');
 const rateLimit = require('express-rate-limit');
 const socketIo = require('socket.io');
 const { type } = require('os');
+const { types } = require('util');
 
 const port = process.env.PORT || 4000;
 
@@ -75,7 +77,8 @@ const userSchema = new mongoose.Schema({
   profileAbout: {type: String, default: ''},
   profileUrl: {type: String, 
     default: () => `${Math.random().toString(36).substring(7)}` , unique: true},
-  createdAt: {type: Date , default:Date.now}
+  createdAt: {type: Date , default:Date.now},
+  deleteAt: {type: Date, default: null},
 });
 
 
@@ -105,8 +108,19 @@ const commentSchema = new mongoose.Schema({
   commentId: {type: mongoose.Schema.Types.String, ref: 'Wallpaper'},
 })
 
-const Comment = mongoose.model('Comment', commentSchema)
+const leaderBoardSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.String, ref: 'username' }, 
+  profileLogo: { type: mongoose.Schema.Types.String, ref: 'ProfileLogo' },
+  profileUrl: { type: mongoose.Schema.Types.String, ref: 'ProfileUrl' },
+  downloads: { type: Number },    
+  rank: { type: Number, default: 0, min: 1, max: 10 },  
+});
 
+
+const Leaderboard = mongoose.model('Leaderboard', leaderBoardSchema);
+
+
+const Comment = mongoose.model('Comment', commentSchema)
 const User = mongoose.model('User', userSchema);
 const Wallpaper = mongoose.model('Wallpaper', wallpaperSchema);
 Wallpaper.init();
@@ -173,7 +187,9 @@ const getUserData = async (req, res) => {
   }
   res.status(200).send({
     username: user.username,
-    email: user.email
+    email: user.email,
+    createdAt: user.createdAt,
+    deleteAt: user.deleteAt,
   });
 };
 
@@ -220,22 +236,26 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.put('/api/user/profile', async (req, res) => {
-
-  
-
-  const { username, profileBanner, profileLogo, profileAbout, profileUrl } = req.body;
+app.post('/api/user/profile', async (req, res) => {
+  const {profileUrl} = req.query;
+  const {profileBanner, profileLogo, password } = req.body;
   try {
     const user = await User.findOne({ profileUrl: profileUrl });
 
+    if (!profileUrl) {
+      return res.status(400).json({ message: 'Wrong Profile Url' });
+  }
+  
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    user.username = username || user.username;
-    user.profileBanner = profileBanner;
+
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    user.password = hashPassword || user.password;
+    user.profileBanner = profileBanner || user.profileBanner;
     user.profileLogo = profileLogo || user.profileLogo;
-    user.profileAbout = profileAbout || user.profileAbout;
 
     await user.save();
     return res.status(200).json({ message: 'Successfully Updated Profile' });
@@ -389,7 +409,6 @@ app.patch('/api/update/wallpaper/downloads', async (req, res) => {
     return res.status(500).json({ message: 'Server Error', error: err.message });
   }
 });
-
 
 
 const updateLike = async (req, res) => {
@@ -548,6 +567,131 @@ app.get('/api/community', async (req, res) => {
     return res.status(500).json({message: 'Server Failed'})
   }
 })
+
+
+app.get('/api/latestwallpaper', async (req ,res) => {
+  try {
+    const latestwallpaper = await Wallpaper.find().sort({ uploadDate: -1}).limit(6);
+    res.json(latestwallpaper);
+  } catch (err) {
+    return res.status(500).json({message: 'Server Failed to get latest wallpaper'})
+  }
+})
+
+const updateLeaderboard = async () => {
+  try {
+    const users = await User.find(); 
+    const wallpapers = await Wallpaper.find(); 
+
+    if (!users || !wallpapers) {
+      throw new Error("Failed to fetch users or wallpapers from the database.");
+    }
+
+    const leaderboardData = users.map(user => {
+      let totalDownloads = 0;
+
+     
+      wallpapers.forEach(wallpaper => {
+        if (user.username === wallpaper.uploaderName) {
+          totalDownloads += wallpaper.downloads || 0; 
+        }
+      });
+
+      return {
+        user: user.username,
+        profileLogo: user.profileLogo,
+        profileUrl: user.profileUrl,
+        downloads: totalDownloads,
+      };
+    });
+
+    leaderboardData.sort((a, b) => b.downloads - a.downloads);
+    const top10LeaderboardData = leaderboardData.slice(0, 10);
+
+    
+    top10LeaderboardData.forEach((entry, index) => {
+      entry.rank = index + 1;
+    });
+
+    const bulkOps = top10LeaderboardData.map(entry => ({
+      updateOne: {
+        filter: { user: entry.user },
+        update: { $set: entry },
+        upsert: true,
+      },
+    }));
+
+    
+    await Leaderboard.bulkWrite(bulkOps);
+
+    console.log("Leaderboard updated successfully.");
+  } catch (err) {
+    console.error("Failed to update leaderboard:", err.message);
+  }
+};
+
+cron.schedule('0 0 * * *', updateLeaderboard)
+
+
+app.get('/api/topleaderboard', async (req, res) => {
+  try {
+const TopLeader = await Leaderboard.find();
+res.json(TopLeader);
+  } catch (err) {
+    return res.status(500).json({message: 'Server Failed to show top leaderboard'})
+  }
+});
+
+app.post('/api/delete-request', async(req, res) => {
+  const { username } = req.body;
+  try {
+const deleteDate = new Date();
+deleteDate.setSeconds(deleteDate.getDate() + 10);
+
+await User.findOneAndUpdate({username}, {deleteAt: deleteDate});
+return res.status(200).json({message: 'Delete Request Successful'})
+
+  } catch(err) {
+    return res.status(500).json({message: 'Failed to Delete Request'})
+  }
+})
+
+app.post('/api/cancel-request', async (req, res) => {
+  const { username } = req.body;
+  try {
+    const cancelDelete = await User.findOneAndUpdate({username},
+       { $set: {deleteAt: null}})
+    return res.status(200).json({message: 'Successfully Canceled'});
+  } catch {
+    return res.status(500).json({message: 'Failed To Cancel'});
+  }
+})
+
+const deleteExpiredAccounts = async () => {
+  const now = new Date();
+
+  try {
+    
+    const expiredUsers = await User.find({ deleteAt: { $lte: now } });
+
+    if (expiredUsers.length === 0) return; 
+
+    
+    const usernames = expiredUsers.map(user => user.username);
+
+   
+    const wallpapers = await Wallpaper.deleteMany({ uploaderName: { $in: usernames } });
+    const comments = await Comment.deleteMany({user: {$in: usernames}});
+    const leaderboard = await Leaderboard.deleteMany({ user: {$in: usernames}})
+    const users = await User.deleteMany({ username: { $in: usernames } });
+
+    console.log(`Deleted ${expiredUsers.length} expired users and their wallpapers.`);
+  } catch (error) {
+    console.error('Error deleting expired users:', error);
+  }
+};
+
+cron.schedule('*/10 * * * * *', deleteExpiredAccounts)
 
 app.get('/api/user/profile/data', userProfileData)
 app.post('/api/register', registerUser);

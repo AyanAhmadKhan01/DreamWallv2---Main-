@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { TopCreators } from './Community';
 
@@ -30,8 +30,8 @@ function Hero() {
         <h1>Discover, Share, and Personalize <br /> Your Screen with DreamWall</h1>
         <p>Explore, upload, and download stunning wallpapers. Like, share, and connect with a community of wallpaper lovers on DreamWall – where your screen is always fresh</p>
         <div className="hero-btn">
-        <button className='hero-btn-gettingstarted'><i className="fas fa-lightbulb"></i>Getting Started</button>
-        <button className='hero-btn-explore'><i className="fas fa-layer-group"></i>Explore</button>
+        <Link to={'/documentation'}><button className='hero-btn-gettingstarted'><i className="fas fa-lightbulb"></i>Getting Started</button></Link>
+       <Link to={'/explore'}><button className='hero-btn-explore'><i className="fas fa-layer-group"></i>Explore</button></Link> 
         <div className="circle-dream-wall"></div>  
         <div className="background-color"></div>  
         </div>
@@ -140,36 +140,46 @@ function BentoBox() {
 
 
 function NewWallpaper() {
+
+  const [isLatest, setIsLatest] = useState([]);
+
+  useEffect(() => {
+    const fetchLatestWallpaper = async() => {
+      try {
+        const response = await fetch('http://localhost:4000/api/latestwallpaper', {
+          method: 'GET',
+        });
+        const data = await response.json(response);
+        setIsLatest(data);
+      } catch (err) {
+        console.error('Failed to fetch Latest Wallpaper', err)
+      }
+    }
+    fetchLatestWallpaper();
+  },[])
+
+  console.log(isLatest)
+  
+  const scrollUp = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+}
     return(
         <>
         <div className="latest-wallpaper-container">
         <h1>Latest New Wallpaper</h1>
             <div className="latest-walllpaper-section">
+            {isLatest.map((latest) => (
+              <Link to={`/explore/${latest.linkCopy}`}>
                 <div className="latest-wallpaper-box">
-                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
-                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
+                <img src={latest.imgLink}/>
+                <h2>{latest.uploaderName} <span><i class="fas fa-heart"> </i> {latest.likes}</span>  <span>{latest.downloads} Downloads</span></h2>
                 </div>
-                <div className="latest-wallpaper-box">
-                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
-                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
-                </div>
-                <div className="latest-wallpaper-box">
-                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
-                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
-                </div>
-                <div className="latest-wallpaper-box">
-                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
-                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
-                </div>
-                <div className="latest-wallpaper-box">
-                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
-                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>4 Downloads</span></h2>
-                </div>
-                <div className="latest-wallpaper-box">
-                <img src="/img/Wallpapers/Wallpaper 9.jpg"/>
-                <h2>DevLegend <span><i class="fas fa-heart"> </i> 5</span>  <span>99 Downloads</span></h2>
-                </div>
-                <button className='explore-all-wallpapers'><i class="fas fa-rocket"></i> Explore all wallpapers</button>
+                </Link>
+                      ))}
+                <Link to={'/explore'}><button className='explore-all-wallpapers' onClick={scrollUp}><i class="fas fa-rocket"></i> Explore all wallpapers</button></Link>   
             </div>
         </div>
         </>
@@ -178,9 +188,23 @@ function NewWallpaper() {
 
 
 function TopCreator() {
-    const TopMember = useContext(TopCreators);
-    console.log(TopMember)
-  
+const [TopMember, setTopMember] = useState([]);
+
+    useEffect(() => {
+      const fetchTopLeaderboard = async() => {
+        try {
+          const response = await fetch('http://localhost:4000/api/topleaderboard', {
+            method: 'GET',
+          });
+          const data = await response.json();
+          setTopMember(data);
+        } catch (err) {
+          console.error('Failed to fetch top Leaderbaord');
+        }
+      } 
+      fetchTopLeaderboard();
+    }, [])
+
     const carouselRef = useRef(null);
     let isDragging = false;
     let startX = 0;
@@ -230,6 +254,7 @@ function TopCreator() {
     const handleImageDragStart = (e) => {
         e.preventDefault(); 
       };
+    
 
     return (
       <div className="top-creators">
@@ -243,22 +268,27 @@ function TopCreator() {
           className="top-creator-section"
           ref={carouselRef}
           onMouseDown={handleMouseDown}
+          onDragStart={handleImageDragStart}
         >
-          {TopMember.map((members, index) => (
+          {TopMember
+          .sort((a , b) => a.rank - b.rank)
+          .map((members, index) => (
+             <Link to={`/profile/${members.profileUrl}`}>
             <div key={index} className="top-creator-box">
+              <span className={`rank  ${index === 0 ? 'firstrank' : ''}`}>{members.rank}</span>
               <img
                 src={members.profileLogo}
                 alt={`creator-${index}`}
-                onDragStart={handleImageDragStart} 
               />
-              <h2>{members.username}</h2>
+              <h2>{members.user}</h2>
               <h3>
-                Downloads {}
+                Downloads 
                 <span>
-                  <i className="far fa-arrow-alt-circle-down"></i> 66
+                  <i className="far fa-arrow-alt-circle-down"></i> {members.downloads}
                 </span>
               </h3>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -273,13 +303,19 @@ function TopCreator() {
         <h1>More Works from the <span>Creator of DreamWall</span> </h1>
             <div className="promotion-section">
                 <div className="promotion-box">
+                  <img src="/img/dashboard-design-chat-social-media-600nw-1993874387.webp" alt="" />
                     <h2>Chatting App <i class="fab fa-rocketchat"></i></h2>
+                    <p>Stay connected effortlessly with our chatting app – a fast, secure, and intuitive platform designed to bring people closer. Whether you’re sharing quick updates, meaningful conversations, or just staying in touch, our app makes communication seamless and enjoyable. With real-time messaging, customizable features, and end-to-end encryption, you can chat your way with peace of mind.</p>
                 </div>
                 <div className="promotion-box">
+                <img src="/img\415db7bbb6dd2758d22d52fe06e06a07.webp" alt="" />
                     <h2>Portfolio <i class="fas fa-briefcase"></i></h2>
+                    <p>Welcome to my portfolio! I’m a dedicated MERN stack developer, specializing in building dynamic and user-centric web applications. From designing intuitive interfaces to developing powerful backends, I focus on creating seamless digital experiences. Explore my work to see how I transform ideas into functional, visually appealing solutions with clean code and innovative approaches.</p>
                 </div>
                 <div className="promotion-box">
+                  <img src="/img/jRJKWa-800.jpg"/>
                     <h2>Soon! <i class="far fa-gem"></i></h2>
+                    <p>Exciting things are coming soon! Stay tuned for something new and innovative—I'm working on a project that will bring fresh, seamless experiences to the web. Keep an eye out for updates and get ready for something special!</p>
                 </div>
             </div>
         </div>

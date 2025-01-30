@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect} from "react"
 import { Link, useParams } from "react-router-dom";
 
 
@@ -120,7 +120,6 @@ function Navbar() {
           <li className="user-section">
             <img
               src={profile.profileLogo} 
-              alt={`${user.username}'s Logo`} 
               className="user-logo" 
             />
             <ul className="account-menu">

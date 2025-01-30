@@ -40,7 +40,7 @@ const Dashboard = () => {
     
 
     axios
-      .post('http://localhost:4000/upload', data)
+      .post('https://dreamwall-backend.onrender.com/upload', data)
       .then((res) => {
       })
       .catch((err) => {
@@ -92,7 +92,7 @@ useEffect(() => {
   useEffect(() => {
     const Analytics = async() => {
       try {
-        const response = await fetch('http://localhost:4000/api/user/analytics', {
+        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/analytics', {
           method: 'GET',
         });
   
@@ -143,7 +143,7 @@ const pagereload = () => {
 useEffect(() => {
   const showUploads = async () => {
     try {
-    const response = await fetch('http://localhost:4000/api/wallpaper/display', {
+    const response = await fetch('https://dreamwall-backend.onrender.com/api/wallpaper/display', {
       method: 'GET',
     });
     if(!response.ok) {
@@ -167,7 +167,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/user/data', {
+        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
           method: 'GET',
           credentials: 'include',
         });
@@ -198,7 +198,7 @@ useEffect(() => {
   }
 
   function handleLogout() {
-    fetch('http://localhost:4000/api/logout', {
+    fetch('https://dreamwall-backend.onrender.com/api/logout', {
       method: 'POST',
       credentials: 'include',
     })
@@ -215,7 +215,7 @@ useEffect(() => {
 
   const wallpaperDelete = async (wallpaper) => {
     try {
-      const response = await fetch('http://localhost:4000/api/user/wallpaper/delete', {
+      const response = await fetch('https://dreamwall-backend.onrender.com/api/user/wallpaper/delete', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

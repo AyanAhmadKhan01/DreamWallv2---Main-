@@ -49,7 +49,7 @@ const { profileUrl } = useParams();
 useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/user/data', {
+        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -61,14 +61,14 @@ useEffect(() => {
           const data = await response.json();
           setUser(data); 
   
-          const matchResponse = await fetch(`http://localhost:4000/api/user/profileMatch?username=${data.username}`);
+          const matchResponse = await fetch(`https://dreamwall-backend.onrender.com/api/user/profileMatch?username=${data.username}`);
   
           if (matchResponse.ok) {
             const matchData = await matchResponse.json();
             const { profileUrl: matchedProfileUrl } = matchData;
   
            
-            const profileResponse = await fetch(`http://localhost:4000/api/user/profile?profileUrl=${matchedProfileUrl}`);
+            const profileResponse = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile?profileUrl=${matchedProfileUrl}`);
   
             if (profileResponse.ok) {
               const profileData = await profileResponse.json();
@@ -132,7 +132,7 @@ const handleSuccess = () => {
 
 const handleAccountDelete = async() => {
   try {
-    const response = await fetch('http://localhost:4000/api/delete-request', {
+    const response = await fetch('https://dreamwall-backend.onrender.com/api/delete-request', {
       method: 'POST',
       body: JSON.stringify({username: user.username}),
       headers: {
@@ -151,7 +151,7 @@ const handleAccountDelete = async() => {
 
 const handleAccountCancel = async() => {
   try {
-    const response = await fetch('http://localhost:4000/api/cancel-request', {
+    const response = await fetch('https://dreamwall-backend.onrender.com/api/cancel-request', {
       method: 'POST',
       body: JSON.stringify({username: user.username}),
       headers: {

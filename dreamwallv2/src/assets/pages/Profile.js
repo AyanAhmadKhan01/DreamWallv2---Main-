@@ -20,7 +20,7 @@ function Profile() {
   useEffect(() => {
     const profileUploads = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/wallpaper/display', {
+        const response = await fetch('https://dreamwall-backend.onrender.com/api/wallpaper/display', {
           method: 'GET',
       })
       const data = await response.json();
@@ -68,7 +68,7 @@ function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/user/profile?profileUrl=${profileUrl}`);
+        const response = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile?profileUrl=${profileUrl}`);
         if (!response.ok) {
           throw new Error('User Profile Not Available');
         }
@@ -136,7 +136,7 @@ function Profile() {
         profileAbout: userinfo.profileAbout,
       };
   
-      const response = await fetch(`http://localhost:4000/api/user/profile`, {
+      const response = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

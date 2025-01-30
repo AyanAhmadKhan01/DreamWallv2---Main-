@@ -146,7 +146,7 @@ function NewWallpaper() {
   useEffect(() => {
     const fetchLatestWallpaper = async() => {
       try {
-        const response = await fetch('http://localhost:4000/api/latestwallpaper', {
+        const response = await fetch('https://dreamwall-backend.onrender.com/api/latestwallpaper', {
           method: 'GET',
         });
         const data = await response.json(response);
@@ -193,7 +193,7 @@ const [TopMember, setTopMember] = useState([]);
     useEffect(() => {
       const fetchTopLeaderboard = async() => {
         try {
-          const response = await fetch('http://localhost:4000/api/topleaderboard', {
+          const response = await fetch('https://dreamwall-backend.onrender.com/api/topleaderboard', {
             method: 'GET',
           });
           const data = await response.json();

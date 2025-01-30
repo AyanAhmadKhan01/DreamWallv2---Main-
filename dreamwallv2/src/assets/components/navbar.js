@@ -11,7 +11,7 @@ function Navbar() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/user/data', {
+        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -23,14 +23,14 @@ function Navbar() {
           const data = await response.json();
           setUser(data); 
   
-          const matchResponse = await fetch(`http://localhost:4000/api/user/profileMatch?username=${data.username}`);
+          const matchResponse = await fetch(`https://dreamwall-backend.onrender.com/api/user/profileMatch?username=${data.username}`);
   
           if (matchResponse.ok) {
             const matchData = await matchResponse.json();
             const { profileUrl: matchedProfileUrl } = matchData;
   
            
-            const profileResponse = await fetch(`http://localhost:4000/api/user/profile?profileUrl=${matchedProfileUrl}`);
+            const profileResponse = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile?profileUrl=${matchedProfileUrl}`);
   
             if (profileResponse.ok) {
               const profileData = await profileResponse.json();
@@ -76,7 +76,7 @@ function Navbar() {
 
 
     function handleLogout() {
-      fetch('http://localhost:4000/api/logout', {
+      fetch('https://dreamwall-backend.onrender.com/api/logout', {
         method: 'POST',
         credentials: 'include', 
       })

@@ -10,7 +10,7 @@ export const TopUser = (props) => {
 useEffect(() => {
     const fetchCommunityData = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/community',{
+            const response = await fetch('https://dreamwall-backend.onrender.com/api/community',{
                 method: 'GET',
             });
             const data = await response.json();
@@ -37,7 +37,7 @@ const [communityProfile, setCommunityProfile ] = useState([]);
 useEffect(() => {
     const fetchCommunityData = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/community',{
+            const response = await fetch('https://dreamwall-backend.onrender.com/api/community',{
                 method: 'GET',
             });
             const data = await response.json();

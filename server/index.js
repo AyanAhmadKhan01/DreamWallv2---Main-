@@ -698,7 +698,12 @@ app.post('/api/register', registerUser);
 app.post('/api/login', loginUser);
 app.get('/api/user/data', authenticateToken, getUserData);
 app.post('/api/logout', (req, res) => {
-  res.clearCookie('token', {path: '/'});
+  res.clearCookie('token', 
+    {path: '/',
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none'
+    });
   res.status(200).send({message: 'Logged out successfully'});
 });
 

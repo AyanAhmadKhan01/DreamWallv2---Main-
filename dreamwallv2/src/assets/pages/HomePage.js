@@ -158,7 +158,6 @@ function NewWallpaper() {
     fetchLatestWallpaper();
   },[])
 
-  console.log(isLatest)
   
   const scrollUp = () => {
   window.scrollTo({

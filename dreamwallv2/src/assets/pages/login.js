@@ -47,7 +47,7 @@ const Login = () => {
     setLoading(false);  
 
     if (response.ok && data.token) {
-      Cookies.set('token', data.token, { expires: 7 }); 
+    
       setMessage('Login successful!');
       window.location.reload();
       navigate('/dashboard');

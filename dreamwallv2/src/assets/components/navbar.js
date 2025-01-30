@@ -82,7 +82,7 @@ function Navbar() {
       })
         .then((response) => {
           if (response.ok) {
-            window.location.reload();
+           
           } else {
             console.error('Failed to log out');
           }

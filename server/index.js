@@ -646,7 +646,7 @@ app.post('/api/delete-request', async(req, res) => {
   const { username } = req.body;
   try {
 const deleteDate = new Date();
-deleteDate.setSeconds(deleteDate.getDate() + 10);
+deleteDate.setDate(deleteDate.getDate() + 7);
 
 await User.findOneAndUpdate({username}, {deleteAt: deleteDate});
 return res.status(200).json({message: 'Delete Request Successful'})
@@ -691,7 +691,7 @@ const deleteExpiredAccounts = async () => {
   }
 };
 
-cron.schedule('*/10 * * * * *', deleteExpiredAccounts)
+cron.schedule('0 * * * *', deleteExpiredAccounts);
 
 app.get('/api/user/profile/data', userProfileData)
 app.post('/api/register', registerUser);

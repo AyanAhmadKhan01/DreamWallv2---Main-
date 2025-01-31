@@ -161,7 +161,7 @@ function WallpaperPage() {
     
       const copyToClipboard = () => {
         clearTimers();
-        const linkToCopy = `http://localhost:3000/explore/${linkCopy}`;
+        const linkToCopy = `https://dreamwallv2.vercel.app/explore/${linkCopy}`;
         navigator.clipboard.writeText(linkToCopy);
     
       
@@ -202,6 +202,8 @@ function WallpaperPage() {
       setComments((prev) => ({ ...prev, [name]: value }));
     };
 
+const [isDisabled, setIsDisabled] = useState(false);
+
   const createComment = async () => {
   try {
     const response = await fetch('https://dreamwall-backend.onrender.com/api/user/comment', {
@@ -219,6 +221,7 @@ function WallpaperPage() {
    if(!response.ok) {
     console.error('Failed to create comment');
    }
+   setIsDisabled(true)
    window.location.reload();
   } catch {
     console.error('Failed To Send comment to server');
@@ -319,7 +322,7 @@ const deleteComment = async (commentId) => {
                 onChange={handleChange}
                 value={comments.commentText} 
            />
-                      <button className="create-comment-btn" onClick={createComment}>Comment</button>
+                      <button className="create-comment-btn" onClick={createComment} disabled={isDisabled}>Comment</button>
                       {viewComments.map((comment) => (
               <div className="comment-container">
               {profile

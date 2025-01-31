@@ -712,6 +712,7 @@ height: 2px;
 
 .comment-container img {
   width: 75px;
+  border-radius: 50px;
 }
 
 .right-comment-side {

@@ -47,7 +47,6 @@ const Login = () => {
     setLoading(false);  
 
     if (response.ok && data.token) {
-    
       setMessage('Login successful!');
       window.location.reload();
       navigate('/dashboard');

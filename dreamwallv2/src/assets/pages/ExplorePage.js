@@ -306,7 +306,7 @@ const handleActiveBar = (active) => {
                   </h6>
                   
                   <h5 onClick={() => {copyToClipboard();
-                     const linkToCopy = `http://localhost:3000/explore/${wallpaper.linkCopy}`;
+                     const linkToCopy = `https://dreamwallv2.vercel.app/explore/${wallpaper.linkCopy}`;
                      navigator.clipboard.writeText(linkToCopy);
                   }}  disabled={isButtonDisabled}>
   <i className="far fa-clone"></i>

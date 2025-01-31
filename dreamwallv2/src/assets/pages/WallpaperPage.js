@@ -50,6 +50,7 @@ function WallpaperPage() {
 
 
     const [isLiked ,setIsLiked] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       if (authenticate) {
@@ -71,6 +72,8 @@ function WallpaperPage() {
 
             } catch (err) {
                 console.error(err)
+            } finally {
+              setLoading(false);
             }
         }
         fetchWallpaperPage();
@@ -205,6 +208,7 @@ function WallpaperPage() {
 const [isDisabled, setIsDisabled] = useState(false);
 
   const createComment = async () => {
+    setIsDisabled(true)
   try {
     const response = await fetch('https://dreamwall-backend.onrender.com/api/user/comment', {
       method: 'POST',
@@ -221,10 +225,11 @@ const [isDisabled, setIsDisabled] = useState(false);
    if(!response.ok) {
     console.error('Failed to create comment');
    }
-   setIsDisabled(true)
    window.location.reload();
   } catch {
     console.error('Failed To Send comment to server');
+  } finally {
+    setIsDisabled(false)
   }
 }
 
@@ -285,6 +290,7 @@ const deleteComment = async (commentId) => {
             <>
             <div className="wallpaper-page-container">
                 <div className="wallpaper-page-section">
+  
                 <img src={wallpaperPage.imgLink} alt={wallpaperPage.wallpaperName} />
                 </div>
                 <div className="wallpaper-page-section">
@@ -372,7 +378,58 @@ const deleteComment = async (commentId) => {
                 </div>
             </>
         ) : (
-            <h1>Failed to Load Wallpaper Page</h1>
+          <div className="wallpaper-page-container">
+          <div className="wallpaper-page-section">
+            <img src={'/img/wallpaper.png'} />
+          </div>
+          <div className="wallpaper-page-section">
+            <div className="wallpaper-page-text-section">
+              <h1>
+                <i className="fas fa-signature"></i>
+                <span>Loading...</span>
+              </h1>
+              <h3>
+                <i className="fas fa-download"></i> 
+                <span>Loading</span>
+              </h3>
+              <h3>
+                <i className="fa fa-calendar"></i> 
+                <span>
+                Loading...
+                </span>
+              </h3>
+              <h3>
+                <i className="fa fa-desktop"></i> 
+                <span>Loading...</span>
+              </h3>
+              <h3>
+                <i className="fa fa-user"></i> 
+                <span>Loading...</span>
+              </h3>
+              <h3>
+                <i className="fas fa-hashtag"></i> 
+                <span className="wallpaper-tags">#Loading...</span>
+              </h3>
+            </div>
+            <div className="wallpaper-page-btn">
+              <h5>
+                <i className="far fa-copy"></i>
+              </h5>
+    
+              <h6 className="like-wallpaper">
+                <i className={`${isLiked ? "fas fa-heart liked" : "far fa-heart"}`}></i>
+              </h6>
+              <button>Download</button>
+            </div>
+    
+            <textarea
+                name="commentText" 
+                id="comment"
+                placeholder="Loading..."
+           />
+                      <button className="create-comment-btn">Loading...</button>             
+          </div>
+        </div>
         )}
     </div> 
     )

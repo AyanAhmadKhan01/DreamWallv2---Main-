@@ -297,7 +297,6 @@ position: relative;
   align-items: center;
   justify-content: center;
   color: #f5faf5;
-  height: 100vh;
   text-align: center;
   border-radius: 200px;
   width: 1375px;
@@ -486,6 +485,34 @@ height: 2px;
     transition: .4s;
   }
   
+
+@media (max-width: 1370px) {
+  .no-wallpaper-found  {
+   align-items: center;
+   width: 800px;
+   margin: auto;
+  }
+  .no-wallpaper-found h1 {
+    font-size: clamp(18px, 8vw, 32px);
+  }
+}
+
+@media (max-width: 800px) {
+  .no-wallpaper-found  {
+    align-items: center;
+    width: 500px;
+    margin: auto;
+   }
+}
+
+@media (max-width: 550px) {
+  .no-wallpaper-found  {
+    align-items: center;
+    width: 320px;
+    margin: auto;
+   }
+}
+
 @media (max-width: 1550px) {
   .mini-container .fa-bars {
     translate: 0px -5px;

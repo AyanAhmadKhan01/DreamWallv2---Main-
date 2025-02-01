@@ -83,23 +83,24 @@ function Profile() {
           {profileSection === 'wallpapers' && (
             <div className="wallpaper-container-section">
               <h1>wallpaper</h1>
-              <div className="flex-container">
+              <div className="flex-wrap-conatiner">
+               
               {profileupload
               .filter((profileuploads) => profile.username === profileuploads.uploaderName)
               .map((profileUploads) => (
                 <Link to={`http://localhost:3000/explore/${profileUploads.linkCopy}`} >
-              <div className="wallpaper-conatiner-mini-section">
+              <div className="wallpaper-container-mini-section">
                 <img src={profileUploads.imgLink}/>
                 <h2>{profileUploads.wallpaperName}</h2>
                 <div className="icons-section">
                 <h3><i class="fas fa-heart"></i> {profileUploads.likes}</h3>
                 <h3><i class="far fa-arrow-alt-circle-down"></i>  {profileUploads.downloads}</h3>
-                </div>
-               
-              </div>
+                </div> 
+              </div>      
               </Link>
                 ))}
-                </div>
+                 
+                  </div>
             </div>
           )}
           {profileSection === 'post' && (

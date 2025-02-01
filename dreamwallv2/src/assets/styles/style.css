@@ -1391,6 +1391,7 @@ font-weight: 900;
  margin-right: 20px;
   max-width: 1500px;
   overflow: hidden;
+  margin: auto;
 }
 
 .promotion-container span {

@@ -183,13 +183,13 @@ const handleDeviceClick = (device) => {
   setCurrentPage(1); 
 };
 
-const [hideSideMenu, setHideSideMenu] = useState(false);
+const [hideSideMenu, setHideSideMenu] = useState(true);
 
 const handleSideMenu = () => {
   setHideSideMenu((prev) => !prev)
 }
 
-const [menuClass, setMenuClass] = useState('show')
+const [menuClass, setMenuClass] = useState('hide')
  
 const handleClass = () => {
   setMenuClass(menuClass === 'show' ? 'hide' : 'show');

@@ -1,28 +1,36 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
     return(
         <>
-         <div className="footer">
+         <div className="footer-container">
             <div className="footer-section">
-                <div className="footer-subsection">
-               <a href="about.html"> <h6>About Us</h6></a>
-               <a href="rules.html"><h6>Terms of Use</h6></a>
-               <a href="privacy.html"><h6>Privacy Policy</h6></a>
+                <div className="footer-sub-section">
+                    <h2>DreamWall</h2>
+                    <Link to={'/'}><h3>Home</h3></Link>
+                    <Link to={'/explore'}><h3>Explore</h3></Link>
+                    <Link to={'/updates'}><h3>Updates</h3></Link>
+                </div>
+                <div className="footer-sub-section">
+                    <h2>Accounts</h2>
+                    <Link to={'/dashboard'}><h3>Dashboard</h3></Link>
+                    <Link to={'/dashboard/settings'}><h3>Account Settings</h3></Link>
+                </div>
+                <div className="footer-sub-section">
+                    <h2>Documentation</h2>
+                    <Link to={'/documentation'}><h3>Introduction</h3></Link>
+                    <Link to={'/documentation/howtoupload'}><h3>How To Upload</h3></Link>
+                    <Link to={'/documentation/becomemoderator'}><h3>Become Moderator</h3></Link>
+                    <Link to={'/documentation/faq'}><h3>Faq</h3></Link>
+                </div><div className="footer-sub-section">
+                <h2>Don’t Be a Stranger! 😏</h2>
+<Link to={'https://discord.gg/KTsFkJmVFc'} target="_blank"><h3><i class="fab fa-discord"></i> Join the Cool Kids on Discord</h3></Link>
+<Link to={'https://x.com/DevLegend_'} target="_blank"><h3><i class="fab fa-twitter"></i> Got Big Ideas? Share 'Em on Twitter and Watch the Magic Happen!</h3></Link>
+<Link to={'www.linkedin.com/in/ayanahmadkhan'} target="_blank"><h3><i class="fab fa-linkedin"></i> Let’s Make Some Boss Moves on LinkedIn!</h3></Link>
+<Link to={'https://devlegend.vercel.app/'} target="_blank"><h3><i class="fas fa-globe"></i> Unlock More Secrets on Our Website</h3></Link>
+                </div>
             </div>
-                <div className="footer-subsection">
-               <a href="faq.html"> <h6>FAQ</h6></a>
-               <a href="team.html"><h6>Our Team</h6></a>
-               <a href="help.html"><h6>Help</h6></a>
-            </div>
-            <div className="footer-subsection">
-                <a href="wallpaper.html"> <h6>Explore</h6></a>
-                <a href="contact.html"><h6>Contact Us</h6></a>
-                <a href="/register.html"><h6>Sign Up</h6></a>
-             </div>
-                <a href="https://github.com/AyanAhmadKhan01" target="_blank"><i className="fa-brands fa-square-github"></i></a>
-                <a href="https://www.linkedin.com/in/ayanahmadkhan/" target="_blank"><i className="fa-brands fa-linkedin"></i></a>
-                <a href="https://discord.gg/z7agFHxwJT" target="_blank"><i className="fa-brands fa-discord"></i></a>
-        </div>
-    </div>
+         </div>
         </>
     )
 }

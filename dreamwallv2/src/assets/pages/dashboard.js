@@ -190,11 +190,81 @@ useEffect(() => {
   }, []);
 
   if (loading) {
-    return <p>Loading user data...</p>;
+    return <>
+    <div className="dashboard-container">
+          <div className="left-dashboard">
+            <div className="left-dash-bar">
+              <div className="left-section">
+           <h3><i class="fas fa-home"></i> Loading...</h3>    
+           <h3><i class="fas fa-cloud"></i>Loading...</h3>
+             <Link><h3><i class="fas fa-chart-line"></i>  Loading...</h3></Link>
+           <Link><h3><i class="fas fa-user-cog"></i> Loading...</h3></Link>
+           <h3 className="log-out-btn"><i class="fas fa-sign-out-alt"></i> Loading...</h3> 
+           </div>
+           </div>
+          </div>
+          <div className="right-dashboard">
+            <div className="right-section">   
+                <div className="analytics">
+            <div className="right-dash-bar">
+              <h1>Loading...</h1>  
+               <i class="fas fa-download"></i>
+               <h2>Loading...</h2>
+               <h3>Loading...</h3>
+               <h4>Loading...</h4>
+            </div>
+            <div className="right-dash-bar">
+              <h1>Loading...</h1> 
+                <i class="far fa-thumbs-up"></i>
+                <h2>Loading...</h2>
+                <h3>Loading...</h3>
+               <h4>Loading...</h4>
+            </div>
+            <div className="right-dash-bar">
+              <h1>Loading...</h1>  
+              <i class="fas fa-cloud-upload-alt"></i>
+              <h2>Loading...</h2>
+              <h3>Loading...</h3>
+               <h4>Loading...</h4>
+            </div>
+            </div>
+
+            <div className="your-uploads">
+            <h1>Loading...</h1>
+    
+            <div className="your-upload-section">
+            <div className="wallpaper-div" style={{ width: '250px', borderRadius: '10px', backgroundColor: '#808080'}}></div>
+            <div className="dashboard-tittle-wallpaper">
+              <h2>Loading...</h2>
+            <h3>Loading...</h3>
+            </div>
+            <div className="dashboard-downloads-wallpaper">      
+            <h2>Loading...</h2>
+            <h3>Loading...</h3>
+            </div>
+            <div className="dashboard-likes-wallpaper">
+            <h2>Loading...</h2>
+            <h3>Loading...</h3>
+            </div>
+            <div className="dashboard-option-wallpaper">
+              <h4>Loading...</h4>
+              <h4>Loading...</h4>
+            <h4>Loading...</h4>
+            </div>
+            </div>
+             
+            </div>
+            </div>
+          </div>
+        </div>
+    </>;
   }
 
   if (error) {
-    return <p style={{ color: 'red' }}>{error}</p>;
+    return <>
+      <div className="failed-container"></div>
+
+    </>;
   }
 
   function handleLogout() {
@@ -471,7 +541,7 @@ useEffect(() => {
             )}
           </div>
         ) : (
-          <p>No user data available</p>
+          <h1>er</h1>
         )}
       </div>
     </>

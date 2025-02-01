@@ -90,15 +90,61 @@ function Navbar() {
         .catch((err) => console.error('Error:', err));
     }
 
+const [viewNavbar, setViewNavbar] = useState(true);
+const [isAnimation, setIsAnimation] = useState(false);
+
+const handleNavbar = () => {
+  setViewNavbar(true);
+  setTimeout(() => {
+    setIsAnimation(true);
+  },0)
+};
+
+const handleCloseNavbar = () => {
+  setIsAnimation(false);
+  setTimeout(() => {
+    setViewNavbar(false);
+  },1000)
+}
+
     return ( 
         <div className="container">
                 <div className="header">
             <div className={`header-section ${isSticky ? 'sticky' : ''}`}>
             <Link to='/home'><h1>Dream Wall</h1></Link> 
-        <div className="navbar">
-            {/* <i className="fa-solid fa-xmark" onclick="hideMenu()"></i>
-            {isNavbarVisible && (*/}
+            <div className="auth-container">
+            {loading ? (  
+          <p className="navbar-logo-responsive"></p>
+        ) : user ? (
+          <li className="user-section navbar-logo-responsive">
+            <img
+              src={profile.profileLogo} 
+              className="user-logo navbar-logo-responsive" 
+              style={{translate: '0px 0px'}}
+            />
+            <ul className="account-menu">
+        <h3>Welcome {profile.username}!</h3>
+        <Link to={`/profile/${profile.profileUrl}`}><li><i className="fas fa-user"></i> Profile</li></Link>
+        <Link to='/dashboard'><li><i className="fas fa-chart-pie"></i> Dashboard</li></Link>
+        <Link to='/dashboard/settings'><li><i className="fas fa-cog"></i> Account Settings</li></Link>
+        <Link to='/' onClick={handleLogout}> <li><i className="fas fa-sign-out-alt"></i> Logout</li></Link>
+       </ul>
+
+          </li>
+           
+        ) : (
+          <li>
+            <Link to="/signup" className="loginbtn navbar-logo-responsive">Signup</Link>
+          </li>
+        )}
+        <i class="fas fa-bars" onClick={handleNavbar}></i>
+          </div>
+          {viewNavbar && (
+
+        
+        <div className={`navbar ${isAnimation ? 'inView' : 'notView'}`}>
           <ul> 
+              <i class="fa-solid fa-xmark" onClick={handleCloseNavbar}></i>
             <li><Link to='/home'>Home</Link></li>
             <li><Link to='/explore'>Explore</Link></li>
             <li className="getting-started-navbar">
@@ -114,10 +160,11 @@ function Navbar() {
      </li>
 
             <li><Link to='/community'>Community</Link></li>
+          
             {loading ? (
-          <li>Loading...</li>
+          <p style={{width: '50px', objectFit: 'cover', borderRadius: '100px', translate: '-10px 8px', backgroundColor: '#808080'}} className="navbar-logo"></p>
         ) : user ? (
-          <li className="user-section">
+          <li className="user-section navbar-logo">
             <img
               src={profile.profileLogo} 
               className="user-logo" 
@@ -134,13 +181,12 @@ function Navbar() {
            
         ) : (
           <li>
-            <Link to="/signup" className="loginbtn">Signup</Link>
+            <Link to="/signup" className="loginbtn navbar-logo">Signup</Link>
           </li>
         )}
           </ul>
-            {/* )} */}
         </div>
-        {/* <i className="fa-solid fa-bars" onclick="showMenu()"></i> */}
+        )}
         </div>
         </div>
         </div>

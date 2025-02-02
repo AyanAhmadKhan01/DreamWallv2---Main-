@@ -40,7 +40,7 @@ const Dashboard = () => {
     
 
     axios
-      .post('https://dreamwall-backend.onrender.com/upload', data)
+      .post(process.env.UPLOAD_WALLPAPER, data)
       .then((res) => {
       })
       .catch((err) => {
@@ -92,7 +92,7 @@ useEffect(() => {
   useEffect(() => {
     const Analytics = async() => {
       try {
-        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/analytics', {
+        const response = await fetch(process.env.ANALYTICS_DATA, {
           method: 'GET',
         });
   
@@ -161,7 +161,7 @@ const pagereload = () => {
 useEffect(() => {
   const showUploads = async () => {
     try {
-    const response = await fetch('https://dreamwall-backend.onrender.com/api/wallpaper/display', {
+    const response = await fetch(process.env.WALLPAPER_DISPLAY, {
       method: 'GET',
     });
     if(!response.ok) {
@@ -185,7 +185,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
+        const response = await fetch(process.env.USER_DATA, {
           method: 'GET',
           credentials: 'include',
         });
@@ -286,7 +286,7 @@ useEffect(() => {
   }
 
   function handleLogout() {
-    fetch('https://dreamwall-backend.onrender.com/api/logout', {
+    fetch(process.env.LOG_OUT, {
       method: 'POST',
       credentials: 'include',
     })
@@ -303,7 +303,7 @@ useEffect(() => {
 
   const wallpaperDelete = async (wallpaper) => {
     try {
-      const response = await fetch('https://dreamwall-backend.onrender.com/api/user/wallpaper/delete', {
+      const response = await fetch(process.env.DELETE_WALLPAPER, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -430,7 +430,7 @@ useEffect(() => {
                   }}>Open <i class="fas fa-folder-open"></i></h4>
                   <h4 onClick={() => 
                   navigator.clipboard
-                    .writeText(`http://localhost:3000/explore/${uploads.linkCopy}`)
+                    .writeText(`https://dreamwallv2.vercel.app/explore/${uploads.linkCopy}`)
                       .then(() => {
                         alert('Link copied to clipboard!');
                       })}

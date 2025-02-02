@@ -19,7 +19,7 @@ function Profile() {
   useEffect(() => {
     const profileUploads = async () => {
       try {
-        const response = await fetch('https://dreamwall-backend.onrender.com/api/wallpaper/display', {
+        const response = await fetch(process.env.WALLPAPER_DISPLAY, {
           method: 'GET',
       })
       const data = await response.json();
@@ -41,7 +41,7 @@ function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile?profileUrl=${profileUrl}`);
+        const response = await fetch(`${process.env.MATCHED_PROFILE}?profileUrl=${profileUrl}`);
         if (!response.ok) {
           throw new Error('User Profile Not Available');
         }
@@ -88,7 +88,7 @@ function Profile() {
               {profileupload
               .filter((profileuploads) => profile.username === profileuploads.uploaderName)
               .map((profileUploads) => (
-                <Link to={`http://localhost:3000/explore/${profileUploads.linkCopy}`} >
+                <Link to={`https://dreamwallv2.vercel.app/explore/${profileUploads.linkCopy}`} >
               <div className="wallpaper-container-mini-section">
                 <img src={profileUploads.imgLink}/>
                 <h2>{profileUploads.wallpaperName}</h2>

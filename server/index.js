@@ -561,7 +561,7 @@ try {
 
 app.get('/api/community', async (req, res) => {
   try {
-    const communityData = await User.find().select('-_id -email -password');
+    const communityData = await User.find().select('-_id -email -password -profileAbout -deleteAt');
     res.json(communityData);
   } catch (err) {
     return res.status(500).json({message: 'Server Failed'})

@@ -22,7 +22,7 @@ const [isUpdated, setIsUpdated] = useState({
 
 const userdata = async() => {
     try {
-        const response = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile?profileUrl=${profile.profileUrl}`, {
+        const response = await fetch(`${process.env.MATCHED_PROFILE}?profileUrl=${profile.profileUrl}`, {
             method: 'POST',
             body: JSON.stringify(isUpdated),
             headers: { 'Content-Type': 'application/json' },
@@ -49,7 +49,7 @@ const { profileUrl } = useParams();
 useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
+        const response = await fetch(process.env.USER_DATA, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -61,14 +61,14 @@ useEffect(() => {
           const data = await response.json();
           setUser(data); 
   
-          const matchResponse = await fetch(`https://dreamwall-backend.onrender.com/api/user/profileMatch?username=${data.username}`);
+          const matchResponse = await fetch(`${process.env.MATCH_USER_DATA}?username=${data.username}`);
   
           if (matchResponse.ok) {
             const matchData = await matchResponse.json();
             const { profileUrl: matchedProfileUrl } = matchData;
   
            
-            const profileResponse = await fetch(`https://dreamwall-backend.onrender.com/api/user/profile?profileUrl=${matchedProfileUrl}`);
+            const profileResponse = await fetch(`${process.env.MATCHED_PROFILE}?profileUrl=${matchedProfileUrl}`);
   
             if (profileResponse.ok) {
               const profileData = await profileResponse.json();
@@ -150,7 +150,7 @@ const handleSuccess = () => {
 
 const handleAccountDelete = async() => {
   try {
-    const response = await fetch('https://dreamwall-backend.onrender.com/api/delete-request', {
+    const response = await fetch(process.env.DELETE_REQUEST, {
       method: 'POST',
       body: JSON.stringify({username: user.username}),
       headers: {
@@ -169,7 +169,7 @@ const handleAccountDelete = async() => {
 
 const handleAccountCancel = async() => {
   try {
-    const response = await fetch('https://dreamwall-backend.onrender.com/api/cancel-request', {
+    const response = await fetch(process.env.CANCEL_REQUEST, {
       method: 'POST',
       body: JSON.stringify({username: user.username}),
       headers: {

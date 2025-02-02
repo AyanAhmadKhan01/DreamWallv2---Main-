@@ -12,7 +12,7 @@ const Login = () => {
 
   useEffect(() => {
     const checkLoginStatus = async () => {
-      const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
+      const response = await fetch(process.env.USER_DATA, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true); 
 
-    const response = await fetch('https://dreamwall-backend.onrender.com/api/login', {
+    const response = await fetch(process.env.LOGIN, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

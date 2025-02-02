@@ -11,7 +11,7 @@ function WallpaperPage() {
     useEffect(() => {
       const authenticateUser =  async () => {   
       try {
-        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
+        const response = await fetch(process.env.USER_DATA, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ function WallpaperPage() {
     useEffect(() => {
       const fetchUserProfile =  async () => {
       try {
-        const response = await fetch('https://dreamwall-backend.onrender.com/api/user/profile/data', {
+        const response = await fetch(process.env.PROFILE_DATA, {
           method: 'GET',
         });
         if(!response.ok) {
@@ -56,7 +56,7 @@ function WallpaperPage() {
       if (authenticate) {
         const fetchWallpaperPage = async () => {
             try {
-                const response = await fetch(`https://dreamwall-backend.onrender.com/api/wallpaper/view?linkCopy=${linkCopy}`);
+                const response = await fetch(`${process.env.WALLPAPER_VIEW}?linkCopy=${linkCopy}`);
                 if(!response.ok) {
                     console.error('Failed to load Wallpaper Page');
                 }
@@ -103,7 +103,7 @@ function WallpaperPage() {
       const UpdateDownload = async () => {
      
         try {
-          const response = await fetch(`https://dreamwall-backend.onrender.com/api/update/wallpaper/downloads`, {
+          const response = await fetch(process.env.UPDATE_DOWNLOADS, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ function WallpaperPage() {
 
       const handleLike = async () => {
         try {
-          const response = await fetch('https://dreamwall-backend.onrender.com/api/update/wallpaper/likes', {
+          const response = await fetch(process.env.UPDATE_LIKE, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
@@ -210,7 +210,7 @@ const [isDisabled, setIsDisabled] = useState(false);
   const createComment = async () => {
     setIsDisabled(true)
   try {
-    const response = await fetch('https://dreamwall-backend.onrender.com/api/user/comment', {
+    const response = await fetch(process.env.CREATE_COMMENT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -239,7 +239,7 @@ const [ viewComments, setViewComments ] = useState([]);
 useEffect(() => {
   const fetchComments = async () => {
   try {
-    const response = await fetch(`https://dreamwall-backend.onrender.com/api/user/comment/view?commentId=${wallpaperPage._id}`);
+    const response = await fetch(`${process.env.VIEW_COMMENT}?commentId=${wallpaperPage._id}`);
     if(!response.ok) {
       console.error('Failed to load Comments');
     }
@@ -262,7 +262,7 @@ const deleteComment = async (commentId) => {
   }
 
   try {
-    const response = await fetch(`https://dreamwall-backend.onrender.com/api/user/comment/view/delete?commentId=${commentId}`, {
+    const response = await fetch(`${process.env.DELETE_COMMENT}?commentId=${commentId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

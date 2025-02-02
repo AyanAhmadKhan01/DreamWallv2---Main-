@@ -13,7 +13,7 @@ function SignUp() {
 
   useEffect(() => {
     const checkLoginStatus = async () => {
-      const response = await fetch('https://dreamwall-backend.onrender.com/api/user/data', {
+      const response = await fetch(process.env.USER_DATA, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ function SignUp() {
     setError('');
 
     try {
-      const response = await fetch('https://dreamwall-backend.onrender.com/api/register', {
+      const response = await fetch(process.env.REGISTER, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

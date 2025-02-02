@@ -62,7 +62,7 @@ function Explore() {
   useEffect(() => {
     const fetchWallpaper = async () => {
       try {
-        const response = await fetch("https://dreamwall-backend.onrender.com/api/wallpaper/display", {
+        const response = await fetch(process.env.WALLPAPER_DISPLAY, {
           method: "GET",
         });
         if (!response.ok) {
@@ -82,7 +82,7 @@ function Explore() {
   useEffect(() => {
     const fetchProfileData = async () => {
       try{
-        const response = await fetch("https://dreamwall-backend.onrender.com/api/user/profile/data", {
+        const response = await fetch(process.env.PROFILE_DATA, {
           method: 'GET',
         });
         if(!response.ok) {

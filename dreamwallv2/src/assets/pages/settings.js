@@ -92,6 +92,24 @@ useEffect(() => {
     fetchUserData();
   }, []);
 
+  const [isClicked, setIsClicked] = useState(true);
+  const [isMenuAnimating, setIsMenuAnimating] = useState(true);
+  
+  const OpenleftMenu = () => {
+    setIsClicked(true);
+    setTimeout(() => {
+      setIsMenuAnimating(true)
+    }, 0)
+  }
+  
+  const CloseleftMenu = () => {
+    setIsMenuAnimating(false)
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 300)
+  }
+  
+  
 
 
   const [isEmpty, setIsEmpty] = useState(false);
@@ -217,11 +235,12 @@ const handleCancelRequest = () => {
 
     return(
         <>
-        <div className="settings-container">
-            <div className="left-settings">
+        <div className="settings-container mobile-settings">
+            <div className="left-settings left-all">
                  <div className="left-dashboard">
                                 <div className="left-dash-bar">
                                   <div className="left-section">
+                                  <i class="fa-solid fa-xmark" onClick={CloseleftMenu}></i>
                               <Link to={'/dashboard'}><h3><i class="fas fa-home"></i> Dashbaord</h3>  </Link>
                               <h3 onClick={handleUploadClick}><i class="fas fa-cloud"></i> Upload</h3> 
                                <Link to={'/dashboard/analytics'}><h3><i class="fas fa-chart-line"></i>  Analytics</h3></Link>

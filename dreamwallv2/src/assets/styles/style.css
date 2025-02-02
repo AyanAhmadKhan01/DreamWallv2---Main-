@@ -205,7 +205,7 @@
 }
 
 
-@media (min-width: 920px) {
+@media (min-width: 1025px) {
   
   .header-section {
     display: flex;
@@ -249,6 +249,7 @@
 
   .navbar ul li {
     margin-top: 20px;
+    color: #f5faf5;
   }
 
   .navbar ul li::after {
@@ -270,8 +271,9 @@
   .navbar ul li:hover::after {
     width: 100%;
   }
-  
+
 }
+
 
 @media (min-width: 1025px) {
   .navbar-logo-responsive {
@@ -283,6 +285,7 @@
   .navbar .fa-xmark {
     display: none;
   }
+
 }
 
 @media (max-width: 1024px) {
@@ -361,6 +364,7 @@
   display: flex;
   align-items: center;
   list-style: none;
+  z-index: 2;
 }
 .auth-container p {
   width: 45px; 
@@ -369,6 +373,9 @@
   border-radius: 100px;
   translate: -4px -3px;
   background-color: #808080;
+}
+.auth-container li {
+  color: #f5faf5;
 }
 }
 

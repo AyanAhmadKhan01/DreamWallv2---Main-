@@ -19,7 +19,7 @@ function Analytics() {
     return(
         <>
         <div className="settings-container">
-                   <div className="left-settings">
+                   <div className="left-settings left-all">
                         <div className="left-dashboard">
                                        <div className="left-dash-bar">
                                          <div className="left-section">

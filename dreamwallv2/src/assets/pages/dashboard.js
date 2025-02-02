@@ -122,6 +122,24 @@ const handleAnimationEnd = () => {
 }
 
 
+const [isClicked, setIsClicked] = useState(true);
+const [isAnimating, setIsAnimating] = useState(true);
+
+const OpenleftMenu = () => {
+  setIsClicked(true);
+  setTimeout(() => {
+    setIsAnimating(true)
+  }, 0)
+}
+
+const CloseleftMenu = () => {
+  setIsAnimating(false)
+  setTimeout(() => {
+    setIsClicked(false);
+  }, 300)
+}
+
+
 const [ yourUploads, setYourUploads ] = useState([]);
 
 const [deleteMenu, setDeleteMenu] = useState(false);
@@ -302,7 +320,7 @@ useEffect(() => {
       console.error('Server Failed:', err);
     }
   };
-  
+
   const wallpaperDefault = '/img/wallpaper.png';
 
   return (
@@ -314,7 +332,10 @@ useEffect(() => {
             <div className="dashboard-container">
               <div className="left-dashboard">
                 <div className="left-dash-bar">
-                  <div className="left-section">
+                  {isClicked && (
+
+                  <div className={`left-section ${isAnimating ? 'dashview': 'notdashview'}`}>
+                 <i class="fa-solid fa-xmark" onClick={CloseleftMenu}></i>
                <h3><i class="fas fa-home"></i> Dashbaord</h3>  
               
                <h3 onClick={handleUploadMenu}><i class="fas fa-cloud"></i> Upload</h3>
@@ -323,8 +344,10 @@ useEffect(() => {
                <Link to={'/dashboard/settings'}><h3><i class="fas fa-user-cog"></i> Settings</h3></Link>
                <h3 onClick={logoutMenu} className="log-out-btn"><i class="fas fa-sign-out-alt"></i> Logout</h3> 
                </div>
+                )}
                </div>
               </div>
+              
               {logout &&(
                 <div className="logout-menu">
                   <div className="logout-section">
@@ -337,6 +360,8 @@ useEffect(() => {
                     </div>
                   </div>
               )} 
+           
+              <i className="fa-solid fa-bars" onClick={OpenleftMenu}></i>
               <div className="right-dashboard">
                 <div className="right-section">   
                   {Array.isArray(analytics) && analytics

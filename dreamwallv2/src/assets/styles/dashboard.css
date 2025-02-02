@@ -18,7 +18,8 @@
   }
 
   .wallpaper-upload-section {
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     height: 600px;
     margin: auto;
    background-color: #060e06;
@@ -194,14 +195,61 @@
     justify-content: center;
   }
 
+  .dashboard-container .fa-bars{
+    color: #e5f6ea;
+    font-size: 20px;
+    float: right;
+    translate: 0px 20px;
+    transition: .3s;
+    z-index: 0;
+    height: fit-content;
+    display: none;
+  }
+
+  .dashboard-container .fa-bars:hover {
+    scale: 1.010;
+  }
+  
+
   .left-dashboard {
-    width: 175px;
+    width: 300px;
     height: 600px;
+    z-index: 1;
+  position: relative;
   }
 
   .left-section {
-    margin-top: 40px;
+    background-color: transparent;
     position: absolute;
+    right: 0px;
+    top: 20px;
+    width: 200px;
+  }
+
+  .left-all {
+    margin-right: 100px;
+  }
+
+  .dashview {
+    translate: 0px 0px;
+    transition: .3s;
+  }
+  .notdashview {
+    translate: -200px 0px;
+    transition: .3s;
+  }
+
+  .left-section .fa-xmark {
+    color: #e5f6ea;
+    font-size: 23px;
+    float: right;
+    translate: 0px 0px;
+    transition: .3s;
+    display: none;
+  }
+
+  .left-section .fa-xmark:hover {
+    scale: 1.010;
   }
 
 .left-section h3 {
@@ -308,24 +356,21 @@ gap: 10px;
 
 
 .right-dashboard {
-  width: 1250px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: auto;
 }
 
 .analytics {
   display: flex;
+  gap: 10px;
+  max-height: 400px; 
+  padding-right: 10px;
+  margin-top: 20px;
 }
-
-.right-section {
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-  padding: 20px 20px;
-}
-
 
 .right-dash-bar {
-  height: 250px;
-  width: 380px;
   margin: 10px 10px; 
   padding: 25px;
   border-radius: 20px;
@@ -422,8 +467,9 @@ gap: 10px;
   padding: 20px 20px;
   background: rgba( 255, 255, 255, 0.05 );
   border-radius: 5px;
-  width: 1200px;
+  width: 1170px;
   margin-bottom: 15px;
+  overflow: hidden;
  }
 
  .your-upload-section img {
@@ -774,5 +820,131 @@ gap: 10px;
 }
 
 
+@media (min-width: 1450px) {
+  .right-dash-bar{
+    width: 370px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .left-section {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    margin: 0px 0px;
+    background-color: #060e06;
+    height: 200vh;
+    width: 210px;
+    padding: 25px;
+  }
+
+  .left-section .fa-home {
+    margin-top: 30px;
+  }
+
+  .analytics {
+    width: 1200px;
+    flex-direction: column;
+    overflow: auto;
+  }
+  .left-section .fa-xmark,
+  .dashboard-container .fa-bars  {
+    display: block;
+  }
+  .dash-bar {
+    min-width: 900px;
+  }
+
+}
+
+@media (max-width: 1230px) {
+  .analytics {
+    width: 1000px;
+  }
+   .your-upload-section {
+    width: 970px;
+   }
+}
+
+@media (max-width: 1024px) {
+  .analytics {
+    width: 750px;
+  }
+   .your-upload-section {
+    width: 740px;
+   }
+}
+
+@media (max-width: 940px) {
+  .wallpaper-upload-section{
+   opacity: 1;
+  }
+  .wallpaper-upload-section::before {
+    content: 'Not Available for Mobile & Tablet';
+   background-color:#060e06;
+   height: 100vh;
+   width: 900px;
+   top: 0px;
+   left: 0px;
+   z-index: 1;
+   position: fixed;
+   font-size: clamp(17px, 5vw, 42px);
+   font-weight: 550;
+   padding: 90px 0px;
+   border-radius: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics {
+    width: 650px;
+  }
+   .your-upload-section {
+    width: 630px;
+   }
+    .your-upload-section  {
+      flex-direction: row;
+      justify-content: top;
+   }
+}
+
+@media (max-width: 670px) {
+  .analytics {
+    width: 500px;
+  }
+   .your-upload-section {
+    width: 490px;
+   }
+}
+
+@media (max-width: 526px) {
+  .analytics {
+    width: 400px;
+  }
+   .your-upload-section {
+    width: 390px;
+   }
+}
+
+@media (max-width: 425px) {
+  .analytics {
+    width: 340px;
+  }
+   .your-upload-section {
+    width: 330px;
+   }
+}
 
 
+@media (max-width: 360px) {
+  .analytics {
+    width: 320px;
+  }
+   .your-upload-section {
+    width: 270px;
+   }
+   .your-upload-section  {
+    justify-content: left;
+    gap: 10px;
+ }
+}

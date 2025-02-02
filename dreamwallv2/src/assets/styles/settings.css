@@ -296,3 +296,21 @@ justify-content: center;
   border: 1px solid #363837;
  }
 
+
+ @media (max-width: 1024px) {
+ .mobile-settings::before {
+    content: 'Not Available for Mobile & Tablet';
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    font-size: clamp(17px, 5vw, 42px);
+   font-weight: 550;
+   padding: 90px 0px;
+   border-radius: 20px;
+    background-color: #060e06;
+    color: #f5faf5;
+ }
+}

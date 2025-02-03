@@ -133,7 +133,7 @@ function Explore() {
 
 
  const [isLoading, setIsLoading] = useState(false);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
 
   const handleScroll = () => {
     const scrollPosition = window.innerHeight + document.documentElement.scrollTop;

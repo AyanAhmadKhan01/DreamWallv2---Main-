@@ -20,7 +20,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', REACT_APP_YOUR_GA4_MEASUREMENT_ID);
+  gtag('config', `${process.env.REACT_APP_YOUR_GA4_MEASUREMENT_ID}`);
 </script>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

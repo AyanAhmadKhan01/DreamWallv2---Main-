@@ -131,7 +131,38 @@ function Explore() {
  const [currentPage, setCurrentPage] = useState(1);
 
 
-const itemsPerPage = 1000;
+
+ const [isLoading, setIsLoading] = useState(false);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+
+  const handleScroll = () => {
+    const scrollPosition = window.innerHeight + document.documentElement.scrollTop;
+    const documentHeight = document.documentElement.offsetHeight;
+
+    const buffer = 50; 
+    if (scrollPosition < documentHeight - buffer || isLoading) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    setItemsPerPage((prevItemsPerPage) => {
+      const newItemsPerPage = prevItemsPerPage + 3;
+      return newItemsPerPage;
+    });
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isLoading]);
+
 
 const indexOfLastItem = currentPage * itemsPerPage;
 const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -301,12 +332,7 @@ const handleActiveBar = (active) => {
            </div>
 
         <div className="masonry">
-        <Suspense
-  fallback={
-      <div className="loader"></div>
-  }
->
-        {currentItems.length > 0 ? (
+    {currentItems.length > 0 ? (
           currentItems.map((wallpaper) => (
             <div className="explore-card" key={wallpaper.id || wallpaper.wallpaperName}>
               <Link to={`/explore/${wallpaper.linkCopy}`}>
@@ -366,9 +392,7 @@ const handleActiveBar = (active) => {
       ))}     
                 <h3>{wallpaper.wallpaperName}</h3>
               </div>
-              
-            </div>
-            
+            </div> 
           ))) : (
             <div className="no-wallpaper-found">
               {loader && (
@@ -384,7 +408,6 @@ const handleActiveBar = (active) => {
                 )}
            </div>
           )}
-          </Suspense>
         </div>
       </div>
     </div>
@@ -392,4 +415,5 @@ const handleActiveBar = (active) => {
     </>
   );
 }
+
 

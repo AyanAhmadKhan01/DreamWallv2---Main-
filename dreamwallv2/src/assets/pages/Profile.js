@@ -10,6 +10,13 @@ function Profile() {
 
   const [profileSection, setProfileSection ] = useState('wallpapers');
 
+
+    useEffect(() => {
+      window.scrollTo({
+        top: '0px',
+      })
+    })
+
   const handlePageLoad = (section) => {
     setProfileSection(section)
   }

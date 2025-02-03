@@ -53,7 +53,45 @@ useEffect(() => {
 const [currentPage, setCurrentPage] = useState(1);
 const [userSearch, setUserSearch] = useState('');
 
-const ProfilePerPage = 10;
+const [ProfilePerPage, setProfilePerPage] = useState(3);
+const [isLoading, setIsLoading] = useState(false);
+
+
+const handleScroll = () => {
+const scrollPosition = window.innerHeight + document.documentElement.scrollTop;
+const documentHeight = document.documentElement.offsetHeight;
+
+const buffer = 100;
+if(scrollPosition < documentHeight - buffer || isLoading) {
+  return;
+}
+
+setProfilePerPage((prevProfile) => {
+  const newProfile = prevProfile + 3;
+  return newProfile;
+})
+
+setTimeout(() => {
+  setIsLoading(false);
+}, 300)
+
+}
+useEffect(() => {
+  window.addEventListener('scroll', handleScroll);
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+},[isLoading])
+
+
+const [noProfile, setNoProfile] = useState(false);
+const [isloader, setIsLoader] = useState(true);
+
+const handlenoProfile = () => {
+  setNoProfile(true)
+  setIsLoader(false)
+}
+
 
 const handleUserSearch = (event) => {
     const search = event.target.value;
@@ -103,12 +141,17 @@ const currentProfile = filter.slice(firstProfile, lastProfile);
   ))
 ) : (
     <div className="no-profile-found">
+      {isloader && (
+      <div className="loader" onAnimationEnd={handlenoProfile}></div>
+    )}
+      {noProfile && (
     <div className="no-profile-found-container">
      <div className="no-profile-found-mini-container">
      <i class="fas fa-user-alt"></i>
      <h1>No Profile <span>Found</span> </h1>
      </div>
     </div>
+    )}
     </div>
 
 )}

@@ -9,6 +9,12 @@ function WallpaperPage() {
     const timers = useRef([]);
 
     useEffect(() => {
+      window.scrollTo({
+        top: '0px',
+      })
+    })
+
+    useEffect(() => {
       const authenticateUser =  async () => {   
       try {
         const response = await fetch(process.env.REACT_APP_USER_DATA, {

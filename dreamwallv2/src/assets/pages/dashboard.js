@@ -209,7 +209,7 @@ useEffect(() => {
 
   if (loading) {
     return <>
-    <div className="dashboard-container">
+    {/* <div className="dashboard-container">
           <div className="left-dashboard">
             <div className="left-dash-bar">
               <div className="left-section">
@@ -274,7 +274,10 @@ useEffect(() => {
             </div>
             </div>
           </div>
-        </div>
+        </div> */}
+         <div className="loader-section">
+    <div className="loader"></div>
+    </div>
     </>;
   }
 

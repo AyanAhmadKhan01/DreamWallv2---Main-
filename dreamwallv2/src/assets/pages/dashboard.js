@@ -289,7 +289,7 @@ useEffect(() => {
   }
 
   function handleLogout() {
-    fetch(process.REACT_APP_env.LOG_OUT, {
+    fetch(process.env.REACT_APP_LOG_OUT, {
       method: 'POST',
       credentials: 'include',
     })

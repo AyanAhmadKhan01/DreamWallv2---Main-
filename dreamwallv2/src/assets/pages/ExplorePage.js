@@ -1,4 +1,4 @@
-import { useState, useEffect,  useRef} from "react";
+import { useState, useEffect,  useRef, Suspense, lazy} from "react";
 import { Link } from "react-router-dom";
 
 function ExplorePage() {
@@ -117,6 +117,14 @@ function Explore() {
   }, []);
 
 
+  const [noWallpaper, setNoWallpaper] = useState(false);
+  const [loader, setLoader] = useState(true);
+
+  const handleViewWallpaper = () => {
+    setNoWallpaper(true)
+      setLoader(false)
+  }
+
   const [searchTerm, setSearchTerm] = useState('');
   const [isDeviceClick, setIsDeviceClick] = useState('ALL');
   const [deviceType, setDeviceType ] = useState('ALL')
@@ -183,7 +191,7 @@ const handleDeviceClick = (device) => {
   setCurrentPage(1); 
 };
 
-const [hideSideMenu, setHideSideMenu] = useState(true);
+const [hideSideMenu, setHideSideMenu] = useState(false);
 
 const handleSideMenu = () => {
   setHideSideMenu((prev) => !prev)
@@ -290,7 +298,15 @@ const handleActiveBar = (active) => {
             </div>
             
            </div>
+
         <div className="masonry">
+        <Suspense
+  fallback={
+    loader && (
+      <div className="loader" onAnimationEnd={handleViewWallpaper}></div>
+    )
+  }
+>
         {currentItems.length > 0 ? (
           currentItems.map((wallpaper) => (
             <div className="explore-card" key={wallpaper.id || wallpaper.wallpaperName}>
@@ -351,18 +367,25 @@ const handleActiveBar = (active) => {
       ))}     
                 <h3>{wallpaper.wallpaperName}</h3>
               </div>
+              
             </div>
             
           ))) : (
             <div className="no-wallpaper-found">
+              {loader && (
+               <div className='loader' onAnimationEnd={handleViewWallpaper}></div>
+                   )}
+               {noWallpaper && (
            <div className="no-wallpaper-found-container">
             <div className="no-wallpaper-found-mini-container">
             <i class="fa-regular fa-image"></i>
             <h1>No Wallpaper <span>Found</span> </h1>
             </div>
            </div>
+                )}
            </div>
           )}
+          </Suspense>
         </div>
       </div>
     </div>

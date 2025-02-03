@@ -99,7 +99,6 @@ function WallpaperPage() {
         }
       };
 
-
       const UpdateDownload = async () => {
      
         try {
@@ -188,9 +187,7 @@ function WallpaperPage() {
     textarea.style.height = "auto"; 
     textarea.style.height = `${textarea.scrollHeight}px`; 
     };
-    
 
-    
 
     const [comments, setComments ] = useState({
       user: '',
@@ -198,7 +195,6 @@ function WallpaperPage() {
       commentText: '',
       commentId: '',
     })
-
 
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -380,7 +376,9 @@ const deleteComment = async (commentId) => {
         ) : (
           <div className="wallpaper-page-container">
           <div className="wallpaper-page-section">
-            <img src={'/img/wallpaper.png'} />
+            <div className="loader-section">
+            <div className="loader"></div>
+            </div>
           </div>
           <div className="wallpaper-page-section">
             <div className="wallpaper-page-text-section">

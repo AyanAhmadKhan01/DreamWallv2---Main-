@@ -12,7 +12,7 @@ const Login = () => {
 
   useEffect(() => {
     const checkLoginStatus = async () => {
-      const response = await fetch(process.env.USER_DATA, {
+      const response = await fetch(process.env.REACT_APP_USER_DATA, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true); 
 
-    const response = await fetch(process.env.LOGIN, {
+    const response = await fetch(process.env.REACT_APP_LOGIN, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

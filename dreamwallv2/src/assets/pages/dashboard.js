@@ -40,7 +40,7 @@ const Dashboard = () => {
     
 
     axios
-      .post(process.env.UPLOAD_WALLPAPER, data)
+      .post(process.env.REACT_APP_UPLOAD_WALLPAPER, data)
       .then((res) => {
       })
       .catch((err) => {
@@ -92,7 +92,7 @@ useEffect(() => {
   useEffect(() => {
     const Analytics = async() => {
       try {
-        const response = await fetch(process.env.ANALYTICS_DATA, {
+        const response = await fetch(process.env.REACT_APP_ANALYTICS_DATA, {
           method: 'GET',
         });
   
@@ -161,7 +161,7 @@ const pagereload = () => {
 useEffect(() => {
   const showUploads = async () => {
     try {
-    const response = await fetch(process.env.WALLPAPER_DISPLAY, {
+    const response = await fetch(process.env.REACT_APP_WALLPAPER_DISPLAY, {
       method: 'GET',
     });
     if(!response.ok) {
@@ -185,7 +185,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(process.env.USER_DATA, {
+        const response = await fetch(process.env.REACT_APP_USER_DATA, {
           method: 'GET',
           credentials: 'include',
         });
@@ -286,7 +286,7 @@ useEffect(() => {
   }
 
   function handleLogout() {
-    fetch(process.env.LOG_OUT, {
+    fetch(process.REACT_APP_env.LOG_OUT, {
       method: 'POST',
       credentials: 'include',
     })
@@ -303,7 +303,7 @@ useEffect(() => {
 
   const wallpaperDelete = async (wallpaper) => {
     try {
-      const response = await fetch(process.env.DELETE_WALLPAPER, {
+      const response = await fetch(process.env.REACT_APP_DELETE_WALLPAPER, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

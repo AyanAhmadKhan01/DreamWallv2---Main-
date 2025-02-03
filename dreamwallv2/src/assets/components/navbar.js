@@ -11,7 +11,7 @@ function Navbar() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(process.env.USER_DATA, {
+        const response = await fetch(process.env.REACT_APP_USER_DATA, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -23,14 +23,14 @@ function Navbar() {
           const data = await response.json();
           setUser(data); 
   
-          const matchResponse = await fetch(`${process.env.MATCH_USER_DATA}?username=${data.username}`);
+          const matchResponse = await fetch(`${process.env.REACT_APP_MATCH_USER_DATA}?username=${data.username}`);
   
           if (matchResponse.ok) {
             const matchData = await matchResponse.json();
             const { profileUrl: matchedProfileUrl } = matchData;
   
            
-            const profileResponse = await fetch(`${process.env.MATCHED_PROFILE}?profileUrl=${matchedProfileUrl}`);
+            const profileResponse = await fetch(`${process.env.REACT_APP_MATCHED_PROFILE}?profileUrl=${matchedProfileUrl}`);
   
             if (profileResponse.ok) {
               const profileData = await profileResponse.json();
@@ -76,7 +76,7 @@ function Navbar() {
 
 
     function handleLogout() {
-      fetch(process.env.LOG_OUT, {
+      fetch(process.env.REACT_APP_LOG_OUT, {
         method: 'POST',
         credentials: 'include', 
       })

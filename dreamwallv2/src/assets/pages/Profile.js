@@ -19,7 +19,7 @@ function Profile() {
   useEffect(() => {
     const profileUploads = async () => {
       try {
-        const response = await fetch(process.env.WALLPAPER_DISPLAY, {
+        const response = await fetch(process.env.REACT_APP_WALLPAPER_DISPLAY, {
           method: 'GET',
       })
       const data = await response.json();
@@ -41,7 +41,7 @@ function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`${process.env.MATCHED_PROFILE}?profileUrl=${profileUrl}`);
+        const response = await fetch(`${process.env.REACT_APP_MATCHED_PROFILE}?profileUrl=${profileUrl}`);
         if (!response.ok) {
           throw new Error('User Profile Not Available');
         }

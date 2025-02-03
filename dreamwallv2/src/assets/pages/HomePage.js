@@ -146,7 +146,7 @@ function NewWallpaper() {
   useEffect(() => {
     const fetchLatestWallpaper = async() => {
       try {
-        const response = await fetch(process.env.LATEST_WALLPAPER, {
+        const response = await fetch(process.env.REACT_APP_LATEST_WALLPAPER, {
           method: 'GET',
         });
         const data = await response.json(response);
@@ -192,7 +192,7 @@ const [TopMember, setTopMember] = useState([]);
     useEffect(() => {
       const fetchTopLeaderboard = async() => {
         try {
-          const response = await fetch(process.env.TOP_LEADERBOARD, {
+          const response = await fetch(process.env.REACT_APP_TOP_LEADERBOARD, {
             method: 'GET',
           });
           const data = await response.json();

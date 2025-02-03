@@ -62,7 +62,7 @@ function Explore() {
   useEffect(() => {
     const fetchWallpaper = async () => {
       try {
-        const response = await fetch(process.env.WALLPAPER_DISPLAY, {
+        const response = await fetch(process.env.REACT_APP_WALLPAPER_DISPLAY, {
           method: "GET",
         });
         if (!response.ok) {
@@ -82,7 +82,7 @@ function Explore() {
   useEffect(() => {
     const fetchProfileData = async () => {
       try{
-        const response = await fetch(process.env.PROFILE_DATA, {
+        const response = await fetch(process.env.REACT_APP_PROFILE_DATA, {
           method: 'GET',
         });
         if(!response.ok) {

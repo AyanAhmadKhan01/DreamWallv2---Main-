@@ -1,5 +1,6 @@
 import { useState, useEffect,  useRef, Suspense, lazy} from "react";
 import { Link } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 
 function ExplorePage() {
   return (
@@ -131,7 +132,7 @@ function Explore() {
  const [currentPage, setCurrentPage] = useState(1);
 
 
-const itemsPerPage = 14;
+const itemsPerPage = 1000;
 
 const indexOfLastItem = currentPage * itemsPerPage;
 const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -210,6 +211,11 @@ const handleActiveBar = (active) => {
   setActiveBar(active);
 }
 
+const LazyLoadOnScroll = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true, 
+    threshold: 0.1, 
+  });
 
   return (
     <>
@@ -302,9 +308,7 @@ const handleActiveBar = (active) => {
         <div className="masonry">
         <Suspense
   fallback={
-    loader && (
-      <div className="loader" onAnimationEnd={handleViewWallpaper}></div>
-    )
+      <div className="loader"></div>
   }
 >
         {currentItems.length > 0 ? (
@@ -393,5 +397,4 @@ const handleActiveBar = (active) => {
     </>
   );
 }
-
-
+}

@@ -1,6 +1,5 @@
 import { useState, useEffect,  useRef, Suspense, lazy} from "react";
 import { Link } from "react-router-dom";
-import { useInView } from "react-intersection-observer";
 
 function ExplorePage() {
   return (
@@ -211,11 +210,7 @@ const handleActiveBar = (active) => {
   setActiveBar(active);
 }
 
-const LazyLoadOnScroll = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true, 
-    threshold: 0.1, 
-  });
+
 
   return (
     <>
@@ -397,4 +392,4 @@ const LazyLoadOnScroll = () => {
     </>
   );
 }
-}
+

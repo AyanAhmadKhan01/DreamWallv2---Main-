@@ -630,7 +630,7 @@ const updateLeaderboard = async () => {
   }
 };
 
-cron.schedule('*/1 * * * *', updateLeaderboard);
+cron.schedule('0 * * * *', updateLeaderboard);
 
 
 app.get('/api/topleaderboard', async (req, res) => {

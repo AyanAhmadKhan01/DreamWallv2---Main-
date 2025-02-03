@@ -2,6 +2,10 @@ import { useParams, Link} from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
 function WallpaperPage() {
+  window.onload.scrollTo({
+    top: '0px',
+    behavior: 'smooth'
+  })
     const { linkCopy } = useParams();
     const [wallpaperPage, setWallpaperPage ] = useState(null);
     const [profile, setProfile] = useState([]);

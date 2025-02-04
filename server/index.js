@@ -60,7 +60,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const app = express();
 const corsOptions = {
-  origin: 'https://dreamwallv2.vercel.app',
+  origin: 'http://localhost:3000',
   credentials: true,
 };
 

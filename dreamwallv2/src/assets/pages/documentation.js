@@ -31,6 +31,7 @@ export default Documentation;
 function SideDoucmentMenu() {
     return(
         <>
+        <div className="left-documentation-conatiner">
         <div className="left-documentation">                  
                    <Link to={'/documentation'}><h3><i class="fas fa-book"></i> Introduction</h3> </Link>
                    <Link to={'/documentation/howtoupload'}><h3><i class="fas fa-cloud-upload-alt"></i> How To Upload</h3></Link>   
@@ -41,6 +42,7 @@ function SideDoucmentMenu() {
                    <Link to={'/documentation/faq'}><h3><i class="fas fa-question-circle"></i> Faq</h3> </Link>   
                    <Link to={'/documentation/support'}><h3><i class="fas fa-info-circle"></i> Support</h3></Link>
                    </div>
+                   </div>
         </>
     )
 }
@@ -50,18 +52,39 @@ function SideDoucmentMenu() {
 export function Introduction() {
     return (
       <>
-         <h2>Introduction</h2>
-    <p>DreamWall is a premium wallpaper community platform designed for enthusiasts and artists to share,
-download, like, comment, and create discussions around wallpapers. Our mission is to provide a seamless experience
-for users while fostering a creative environment.</p>
-    <ul>
-        <li>High-quality wallpaper collection</li>
-        <li>Easy upload and sharing system</li>
-        <li>Interactive comments and likes</li>
-        <li>Profile customization options</li>
-        <li>Moderation tools for trusted users</li>
-        <li>A responsive design across devices</li>
-    </ul>
+      <div className="documentation-main-container">
+         <h1>Introduction t<span className="heading-span">o DreamWall</span></h1>
+         <p>Welcome to DreamWall! Here’s everything you need to know to get started with our premium wallpaper community!</p>
+         <h2>1. High-Quality Wallpaper Collection</h2>
+      <p>
+        DreamWall offers a vast library of stunning, high-resolution wallpapers across various categories. Whether you love nature, technology, abstract art, or anime, you'll find wallpapers that suit your style. Our collection is constantly updated, ensuring fresh and trending designs.
+      </p>
+
+      <h2>2. Easy Upload & Sharing System</h2>
+      <p>
+        Uploading wallpapers has never been easier! With our simple and intuitive upload system, you can add your own wallpapers in just a few clicks. Simply go to the Upload section, select your image, add tags, and share it with the community.
+      </p>
+
+      <h2>3. Interactive Comments & Likes</h2>
+      <p>
+        Engage with the DreamWall community through our interactive features. Like your favorite wallpapers, leave comments, and join discussions. This helps in discovering trending wallpapers and supporting talented creators.
+      </p>
+
+      <h2>4. Profile Customization Options</h2>
+      <p>
+        Personalize your DreamWall experience with customizable profiles. Upload a profile picture, write a bio, and showcase your favorite wallpapers. Make your profile stand out and connect with other wallpaper enthusiasts.
+      </p>
+
+      <h2>5. Moderation Tools for Trusted Users</h2>
+      <p>
+        Selected and trusted users can access special moderation tools to keep DreamWall a safe and high-quality platform. Moderators can review reports, remove inappropriate content, and help maintain a positive environment.
+      </p>
+
+      <h2>6. Responsive Design Across Devices</h2>
+      <p>
+        DreamWall is designed with a fully responsive layout, ensuring a smooth experience across all devices. Whether you're browsing on a desktop, tablet, or smartphone, DreamWall adapts seamlessly for optimal viewing.
+      </p>
+      </div>
       </>
     );
   }
@@ -69,17 +92,37 @@ for users while fostering a creative environment.</p>
  export function HowToUpload() {
     return (
       <>
-        <h2>How to Upload Wallpapers</h2>
-    <p>To upload a wallpaper, follow these steps:</p>
-    <ol>
-        <li><strong>Login or Register:</strong> Access the DreamWall dashboard using your credentials</li>
-        <li><strong>Go to Upload Section:</strong> Click on the "Upload" tab or button located on the
-dashboard</li>
-        <li><strong>Select Wallpaper:</strong> Browse your device for the wallpaper you wish to upload</li>
-        <li><strong>Add Details (Optional):</strong> Fill in title, description, and tags for better
-visibility</li>
-        <li><strong>Upload Now:</strong> Click "Upload" to submit your creation</li>
-    </ol>
+      <div className="documentation-main-container">
+      <h1>How to <span className="heading-span">Upload Wallpapers</span></h1>
+      <h3>To upload a wallpaper, follow these steps</h3>
+
+      <p>
+  <span className="steps">Step 1 <i className="fa-solid fa-check"></i></span> Login or Register - Access the DreamWall dashboard using your credentials.
+</p>
+<div className="img-div">
+  <Link to={'/signup'} target="_blank">
+<img src="/img/Register.png" alt="register" />
+</Link>
+<Link to={'/login'} target="_blank">
+<img src="/img/Login.png" alt="login" />
+</Link>
+</div>
+      <p>
+      <span className="steps">Step 2 <i className="fa-solid fa-check"></i></span> Go to Upload Section - Click on the "Upload" tab or button located on the dashboard.
+      </p>
+      <img src="/img/upload section.PNG" alt="dashboard-upload" className="documentation-dashboard-upload" />
+      <p>
+      <span className="steps">Step 3 <i className="fa-solid fa-check"></i></span> Select Wallpaper - Browse your device for the wallpaper you wish to upload.
+      </p>
+      <img src="/img/choose wallpaper.PNG" alt="choose-wallpaper" className="choose-wallpaper" />
+      <p>
+      <span className="steps">Step 4 <i className="fa-solid fa-check"></i></span> Add Details - Fill in the title and tags for better visibility.
+      </p>
+      <img src="/img/Upload landscape.PNG" alt="upload-img" className="upload-wallpaper"/>
+      <p>
+      <span className="steps">Step 5 <i className="fa-solid fa-check"></i></span> Upload Now - Click "Upload" to submit your creation.
+      </p>
+    </div>
       </>
     );
   }
@@ -87,14 +130,15 @@ visibility</li>
 export function ManageWallpaper() {
     return (
       <>
-        <h2>Managing Your Wallpapers</h2>
-    <p>After uploading, you can manage your wallpapers through the dashboard:</p>
-    <ul>
-        <li>Delete any wallpaper by clicking the delete button</li>
-        <li>Copy the download link using the copy icon</li>
-        <li>Open the wallpaper directly in a new tab</li>
-        <li>Create albums to organize your collection</li>
-    </ul>
+       <div className="documentation-main-container">
+      <h1>Managing <span className="heading-span">Your Wallpapers</span></h1>
+<h4>After uploading, you can manage your wallpapers through the dashboard</h4>
+
+<p><span className="documentation-delete">Delete <i class="fa-solid fa-trash-can"></i></span> Remove any wallpaper by clicking the delete button.</p>
+<p><span className="documentation-copy">Copy <i class="fa-solid fa-copy"></i></span> Use the copy icon to get the download link.</p>
+<p> <span className="documentation-open">Open <i class="fa-solid fa-file"></i></span> View the wallpaper directly in a new tab.</p>
+<img src="/img/Dashboard.PNG" alt="dashbaord" className="documentation-dashboard-image" />
+</div>
       </>
     );
   }
@@ -102,19 +146,18 @@ export function ManageWallpaper() {
 export function CreateAccount() {
     return (
       <>
-      <h2>Create an Account</h2>
-    <p>Creating an account on DreamWall is quick and straightforward:</p>
-    <div class="highlight">
-        <strong>Steps to Create an Account:</strong>
+<div className="documentation-main-container">
+      <h1>Create a<span className="heading-span">n Account</span></h1>
         <br/>
-        1. Click on the "Register" option on the homepage
+        <span className="steps">Step 1 <i className="fa-solid fa-check"></i></span> Click on the "Register" option in Navbar
         <br/>
-        2. Fill in your personal details including email, username, and password
+        <span className="steps">Step 2 <i className="fa-solid fa-check"></i></span> Fill in your personal details including email, username, and password
         <br/>
-        3. Confirm registration by clicking on the link sent to your email
+        <span className="steps">Step 3 <i className="fa-solid fa-check"></i></span> Confirm registration by clicking on the link sent to your email
         <br/>
-        4. Login with your credentials to access the platform
+        <span className="steps">Step 4 <i className="fa-solid fa-check"></i></span> Login with your credentials to access the platform
     </div>
+
       </>
     );
   }
@@ -122,14 +165,17 @@ export function CreateAccount() {
  export function ProfileSettings() {
     return (
       <>
-       <h2>Profile Settings</h2>
-    <ul>
-        <li>Update profile picture</li>
-        <li>Edit username and password</li>
-        <li>Enable/disable notifications</li>
-        <li>View wallpaper statistics</li>
-        <li>Manage albums and permissions</li>
-    </ul>
+      <div className="documentation-main-container">
+     <h1>Profile <span className="heading-span">Settings</span></h1>
+<h2>Update Profile Picture and Banner</h2>
+<p>Customize your profile by uploading a new profile picture and banner to make your account stand out.</p>
+
+<h2>Edit Username and Password</h2>
+<p>Keep your account secure by updating your username and password anytime through the settings page.</p>
+
+<h2>View Wallpaper Statistics</h2>
+<p>Track the performance of your uploaded wallpapers, including views, likes, and downloads.</p>
+</div>
       </>
     );
   }
@@ -137,14 +183,22 @@ export function CreateAccount() {
  export function BecomeModerator() {
     return (
       <>
-         <h2>Become a Moderator</h2>
-    <p>Becoming a moderator is an honor that comes with great responsibilities. To apply:</p>
-    <div class="highlight">
-        1. Follow our social media handles: [DevLegend](#) and [Ayan Ahmad Khan](#)<br/>
-        2. Join our Discord server through the platform's interface<br/>
-        3. Participate in interviews arranged by Ayan Ahmad Khan<br/>
-        4. Successful completion of interview leads to moderator status
-    </div>
+      <div className="documentation-main-container">
+      <h1>Become a <span className="heading-span">Moderator</span></h1>
+<p>Becoming a moderator is an honor that comes with great responsibilities. To apply, follow these steps:</p>
+
+<h2>Step 1: Follow Our Social Media</h2>
+<p>Stay updated and connected by following <b>DevLegend</b> and <b>Ayan Ahmad Khan</b> on social media.</p>
+
+<h2>Step 2: Join Our Discord Server</h2>
+<p>Engage with the community and moderators by joining our official Discord server through the platform.</p>
+
+<h2>Step 3: Participate in the Interview</h2>
+<p>Attend the interview session arranged by <b>Ayan Ahmad Khan</b> to showcase your understanding of the platform.</p>
+
+<h2>Step 4: Earn Moderator Status</h2>
+<p>Successfully passing the interview grants you moderator privileges, allowing you to help maintain the community.</p>
+</div>
       </>
     );
   }
@@ -152,15 +206,18 @@ export function CreateAccount() {
  export function FAQ() {
     return (
       <>
-       <h2>FAQ</h2>
-    <ul>
-        <li><strong>Q: How do I download a wallpaper?</strong> A: Click the download button or copy-paste the
-link</li>
-        <li><strong>Q: Can I share my wallpaper on social media?</strong> A: Yes, but ensure proper credit is
-given</li>
-        <li><strong>Q: What are the dimensions available?</strong> A: Various sizes from 1920x1080 to custom
-sizes</li>
-    </ul>
+         <div className="documentation-main-container">
+       <h1><span className="heading-span">FAQ</span></h1>
+
+<h2>How do I download a wallpaper?</h2>
+<p>Click the <b>download</b> button or copy and paste the link to save the wallpaper.</p>
+
+<h2>Can I share my wallpaper on social media?</h2>
+<p>Yes, you can share your wallpaper, but make sure to provide to the original creator.</p>
+
+<h2>What are the dimensions available?</h2>
+<p>Wallpapers are available in various sizes, ranging from <b>1920x1080</b> to <b>3840x2160</b> based on your preference.</p>
+</div>
       </>
     );
   }
@@ -168,17 +225,21 @@ sizes</li>
  export function Support() {
     return (
       <>
-        <h2>Support</h2>
-    <div class="support-form">
-        <h3>Contact Us For:</h3>
-        <ul>
-            <li>General inquiries - info@dreamwall.com</li>
-            <li>Wallpaper removal - abuse@dreamwall.com</li>
-            <li>Technical issues - help@dreamwall.com</li>
-        </ul>
-       
-    
-    </div>
+<div className="documentation-main-container">
+     <h1>Sup<span className="heading-span">port</span></h1>
+<h2>General Inquiries</h2>
+<p>For any general questions or information, reach out to us at  <Link to={'https://discord.gg/KTsFkJmVFc'} className="discord-docs"><b> Discord</b></Link></p>
+
+<h2>Wallpaper Removal</h2>
+<p>If you need to report or request the removal of a wallpaper, contact us at  <Link to={'https://discord.gg/KTsFkJmVFc'} className="discord-docs"><b> Discord</b></Link></p>
+
+<h2>Technical Issues</h2>
+<p>Facing technical difficulties? Get in touch with our support team at     
+   <Link to={'https://discord.gg/KTsFkJmVFc'} className="discord-docs"><b> Discord</b></Link></p>
+
+<h2>© 2025 DreamWall</h2>
+<p>All rights reserved. DreamWall is a platform dedicated to wallpaper enthusiasts, ensuring a seamless experience for all users.</p>
+</div>
       </>
     );
   }

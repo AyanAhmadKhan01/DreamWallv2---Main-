@@ -156,7 +156,7 @@ export function Introduction() {
       <p>
       <span className="steps">Step 3 <i className="fa-solid fa-check"></i></span> Select Wallpaper - Browse your device for the wallpaper you wish to upload.
       </p>
-      <img src="/img/choose wallpaper.PNG" alt="choose-wallpaper" className="choose-wallpaper" />
+      <img src="/img/choose wallpaper.PNG" alt="choose-wallpaper-img" className="choose-wallpaper" />
       <p>
       <span className="steps">Step 4 <i className="fa-solid fa-check"></i></span> Add Details - Fill in the title and tags for better visibility.
       </p>

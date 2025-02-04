@@ -1,14 +1,51 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 
 function Documentation() {
+  const [sideMenu, setSideMenu] = useState(true);
+  const [menuBtn, setMenuBtn] = useState(true);
+  const [isAnimation, setIsAnimation] = useState(false);
+
+
+  const OpenSideMenu = () => {
+    setSideMenu(true); 
+    setMenuBtn(false);
+    setTimeout(() => {
+      setIsAnimation(true)
+    },0)
+  };
+
+  const ClosesideMenu = () => {
+    setIsAnimation(false) 
+    setMenuBtn(true);
+    setTimeout(() => {
+      setSideMenu(false);
+    },400)
+  };
+
+  useEffect(() => {
+    const updateMenuState = () => {
+      setSideMenu(window.innerWidth >= 1000);
+      setMenuBtn(window.innerWidth <= 1000)
+      setTimeout(() => {
+        setIsAnimation((prev) => !prev)
+      },100)
+    };
+
+    updateMenuState();
+    window.addEventListener('resize', updateMenuState)
+  },[])
+
     return(
         <>
         <div className="documentation-container">
             <div className="documentation-section">           
-                 <SideDoucmentMenu/>
+                 <SideDoucmentMenu sideMenu={sideMenu} isAnimation={isAnimation} ClosesideMenu={ClosesideMenu}/>
                 <div className="right-documentation">
+                {menuBtn && ( 
+                    <i class="fa-solid fa-bars" onClick={OpenSideMenu}></i>
+              )}
                 <Routes>
                         <Route path="/" element={<Introduction />} />
                         <Route path="/howtoupload" element={<HowToUpload />} />
@@ -28,10 +65,14 @@ function Documentation() {
 export default Documentation;
 
 
-function SideDoucmentMenu() {
+function SideDoucmentMenu({ sideMenu, isAnimation, ClosesideMenu }) {
+ 
+
     return(
         <>
-        <div className="left-documentation-conatiner">
+        {sideMenu && (
+        <div className={`left-documentation-conatiner ${isAnimation ? 'left-documentation-show' : 'left-documentation-hide'}`}>
+        <i class="fa-solid fa-bars" onClick={ClosesideMenu}></i>
         <div className="left-documentation">                  
                    <Link to={'/documentation'}><h3><i class="fas fa-book"></i> Introduction</h3> </Link>
                    <Link to={'/documentation/howtoupload'}><h3><i class="fas fa-cloud-upload-alt"></i> How To Upload</h3></Link>   
@@ -43,6 +84,7 @@ function SideDoucmentMenu() {
                    <Link to={'/documentation/support'}><h3><i class="fas fa-info-circle"></i> Support</h3></Link>
                    </div>
                    </div>
+                    )}
         </>
     )
 }
@@ -101,10 +143,10 @@ export function Introduction() {
 </p>
 <div className="img-div">
   <Link to={'/signup'} target="_blank">
-<img src="/img/Register.png" alt="register" />
+<img src="img/Register.PNG" alt="register" />
 </Link>
 <Link to={'/login'} target="_blank">
-<img src="/img/Login.png" alt="login" />
+<img src="img/Login.png" alt="login" />
 </Link>
 </div>
       <p>

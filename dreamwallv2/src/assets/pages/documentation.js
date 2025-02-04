@@ -143,10 +143,10 @@ export function Introduction() {
 </p>
 <div className="img-div">
   <Link to={'/signup'} target="_blank">
-<img src="img/Register.PNG" alt="register" />
+<img src="/img/Register.png" alt="register" />
 </Link>
 <Link to={'/login'} target="_blank">
-<img src="img/Login.png" alt="login" />
+<img src="/img/Login.png" alt="login" />
 </Link>
 </div>
       <p>
@@ -230,7 +230,7 @@ export function CreateAccount() {
 <p>Becoming a moderator is an honor that comes with great responsibilities. To apply, follow these steps:</p>
 
 <h2>Step 1: Follow Our Social Media</h2>
-<p>Stay updated and connected by following <b>DevLegend</b> and <b>Ayan Ahmad Khan</b> on social media.</p>
+<p>Stay updated and connected by following <b>DevLegend</b> aka <b>Ayan Ahmad Khan</b> on social media.</p>
 
 <h2>Step 2: Join Our Discord Server</h2>
 <p>Engage with the community and moderators by joining our official Discord server through the platform.</p>

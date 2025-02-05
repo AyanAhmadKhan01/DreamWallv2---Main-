@@ -43,7 +43,7 @@ function Documentation() {
             <div className="documentation-section">           
                  <SideDoucmentMenu sideMenu={sideMenu} isAnimation={isAnimation} ClosesideMenu={ClosesideMenu}/>
                 <div className="right-documentation">
-                <i class="fa-solid fa-bars" onClick={OpenSideMenu}></i>
+                <i className="fa-solid fa-bars" onClick={OpenSideMenu}></i>
             
                 <Routes>
                         <Route path="/" element={<Introduction />} />
@@ -71,16 +71,16 @@ function SideDoucmentMenu({ sideMenu, isAnimation, ClosesideMenu }) {
         <>
         {sideMenu && (
         <div className={`left-documentation-conatiner ${isAnimation ? 'left-documentation-show' : 'left-documentation-hide'}`}>
-        <i class="fa-solid fa-bars" onClick={ClosesideMenu}></i>
+        <i className="fa-solid fa-bars" onClick={ClosesideMenu}></i>
         <div className="left-documentation">                  
-                   <Link to={'/documentation'}><h3><i class="fas fa-book"></i> Introduction</h3> </Link>
-                   <Link to={'/documentation/howtoupload'}><h3><i class="fas fa-cloud-upload-alt"></i> How To Upload</h3></Link>   
-                   <Link to={'/documentation/managewallpaper'}><h3><i class="fas fa-image"></i> Manage Wallpaper</h3></Link> 
-                   <Link to={'/documentation/createaccount'}><h3><i class="fas fa-user"></i> Create Account</h3></Link>
-                   <Link to={'/documentation/profilesettings'}><h3><i class="fas fa-user-cog"></i> Profile Settings</h3> </Link>
-                   <Link to={'/documentation/becomemoderator'}><h3><i class="fas fa-user-shield"></i> Become Moderator</h3></Link>   
-                   <Link to={'/documentation/faq'}><h3><i class="fas fa-question-circle"></i> Faq</h3> </Link>   
-                   <Link to={'/documentation/support'}><h3><i class="fas fa-info-circle"></i> Support</h3></Link>
+                   <Link to={'/documentation'}><h3><i className="fas fa-book"></i> Introduction</h3> </Link>
+                   <Link to={'/documentation/howtoupload'}><h3><i className="fas fa-cloud-upload-alt"></i> How To Upload</h3></Link>   
+                   <Link to={'/documentation/managewallpaper'}><h3><i className="fas fa-image"></i> Manage Wallpaper</h3></Link> 
+                   <Link to={'/documentation/createaccount'}><h3><i className="fas fa-user"></i> Create Account</h3></Link>
+                   <Link to={'/documentation/profilesettings'}><h3><i className="fas fa-user-cog"></i> Profile Settings</h3> </Link>
+                   <Link to={'/documentation/becomemoderator'}><h3><i className="fas fa-user-shield"></i> Become Moderator</h3></Link>   
+                   <Link to={'/documentation/faq'}><h3><i className="fas fa-question-circle"></i> Faq</h3> </Link>   
+                   <Link to={'/documentation/support'}><h3><i className="fas fa-info-circle"></i> Support</h3></Link>
                    </div>
                    </div>
                     )}
@@ -175,9 +175,9 @@ export function ManageWallpaper() {
       <h1>Managing <span className="heading-span">Your Wallpapers</span></h1>
 <h4>After uploading, you can manage your wallpapers through the dashboard</h4>
 
-<p><span className="documentation-delete">Delete <i class="fa-solid fa-trash-can"></i></span> Remove any wallpaper by clicking the delete button.</p>
-<p><span className="documentation-copy">Copy <i class="fa-solid fa-copy"></i></span> Use the copy icon to get the download link.</p>
-<p> <span className="documentation-open">Open <i class="fa-solid fa-file"></i></span> View the wallpaper directly in a new tab.</p>
+<p><span className="documentation-delete">Delete <i className="fa-solid fa-trash-can"></i></span> Remove any wallpaper by clicking the delete button.</p>
+<p><span className="documentation-copy">Copy <i className="fa-solid fa-copy"></i></span> Use the copy icon to get the download link.</p>
+<p> <span className="documentation-open">Open <i className="fa-solid fa-file"></i></span> View the wallpaper directly in a new tab.</p>
 <img src="/img/Dashboard.PNG" alt="dashbaord" className="documentation-dashboard-image" />
 </div>
       </>

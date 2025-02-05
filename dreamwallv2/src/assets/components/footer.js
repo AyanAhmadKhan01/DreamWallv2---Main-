@@ -24,10 +24,10 @@ function Footer() {
                     <Link to={'/documentation/faq'}><h3>Faq</h3></Link>
                 </div><div className="footer-sub-section">
                 <h2>Don’t Be a Stranger! 😏</h2>
-<Link to={'https://discord.gg/KTsFkJmVFc'} target="_blank"><h3><i class="fab fa-discord"></i> Join the Cool Kids on Discord</h3></Link>
-<Link to={'https://x.com/DevLegend_'} target="_blank"><h3><i class="fab fa-twitter"></i> Got Big Ideas? Share 'Em on Twitter and Watch the Magic Happen!</h3></Link>
-<Link to={'www.linkedin.com/in/ayanahmadkhan'} target="_blank"><h3><i class="fab fa-linkedin"></i> Let’s Make Some Boss Moves on LinkedIn!</h3></Link>
-<Link to={'https://devlegend.vercel.app/'} target="_blank"><h3><i class="fas fa-globe"></i> Unlock More Secrets on Our Website</h3></Link>
+<Link to={'https://discord.gg/KTsFkJmVFc'} target="_blank"><h3><i className="fab fa-discord"></i> Join the Cool Kids on Discord</h3></Link>
+<Link to={'https://x.com/DevLegend_'} target="_blank"><h3><i className="fab fa-twitter"></i> Got Big Ideas? Share 'Em on Twitter and Watch the Magic Happen!</h3></Link>
+<Link to={'www.linkedin.com/in/ayanahmadkhan'} target="_blank"><h3><i className="fab fa-linkedin"></i> Let’s Make Some Boss Moves on LinkedIn!</h3></Link>
+<Link to={'https://devlegend.vercel.app/'} target="_blank"><h3><i className="fas fa-globe"></i> Unlock More Secrets on Our Website</h3></Link>
                 </div>
             </div>
          </div>

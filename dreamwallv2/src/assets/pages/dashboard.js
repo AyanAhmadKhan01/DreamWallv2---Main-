@@ -338,7 +338,7 @@ useEffect(() => {
                   {isClicked && (
 
                   <div className={`left-section ${isAnimating ? 'dashview': 'notdashview'}`}>
-                 <i class="fa-solid fa-xmark" onClick={CloseleftMenu}></i>
+                 <i className="fa-solid fa-xmark" onClick={CloseleftMenu}></i>
                <h3><i class="fas fa-home"></i> Dashbaord</h3>  
               
                <h3 onClick={handleUploadMenu}><i class="fas fa-cloud"></i> Upload</h3>
@@ -354,7 +354,7 @@ useEffect(() => {
               {logout &&(
                 <div className="logout-menu">
                   <div className="logout-section">
-                  <i class="fas fa-exclamation"></i>
+                  <i className="fas fa-exclamation"></i>
                     <h1>Are You Sure want log-out?</h1>
                     <div className="logout-btns">
                     <button onClick={handleLogout}>Yes</button>
@@ -373,24 +373,24 @@ useEffect(() => {
                     <div className="analytics">
                 <div className="right-dash-bar">
                   <h1>Total Download</h1>  
-                   <i class="fas fa-download"></i>
+                   <i className="fas fa-download"></i>
                    <h2>{total.totalDownloads}</h2>
                    <h3>Daily Average</h3>
-                   <h4>Downloads <i class="fas fa-exclamation-circle"></i></h4>
+                   <h4>Downloads <i className="fas fa-exclamation-circle"></i></h4>
                 </div>
                 <div className="right-dash-bar">
                   <h1>Total Likes</h1> 
-                    <i class="far fa-thumbs-up"></i>
+                    <i className="far fa-thumbs-up"></i>
                     <h2>{total.totalLikes}</h2>
                     <h3>Daily Average</h3>
-                   <h4>Likes <i class="fas fa-exclamation-circle"></i></h4>
+                   <h4>Likes <i className="fas fa-exclamation-circle"></i></h4>
                 </div>
                 <div className="right-dash-bar">
                   <h1>Total Uploads</h1>  
-                  <i class="fas fa-cloud-upload-alt"></i>
+                  <i className="fas fa-cloud-upload-alt"></i>
                   <h2>{total.totalUploads}</h2>
                   <h3>Daily Average</h3>
-                   <h4>Uploads <i class="fas fa-exclamation-circle"></i></h4>
+                   <h4>Uploads <i className="fas fa-exclamation-circle"></i></h4>
                 </div>
                 </div>
   ))}
@@ -430,15 +430,15 @@ useEffect(() => {
                 <div className="dashboard-option-wallpaper">
                   <h4 onClick={() => {
                     navigate(`/explore/${uploads.linkCopy}`)
-                  }}>Open <i class="fas fa-folder-open"></i></h4>
+                  }}>Open <i className="fas fa-folder-open"></i></h4>
                   <h4 onClick={() => 
                   navigator.clipboard
                     .writeText(`https://dreamwallv2.vercel.app/explore/${uploads.linkCopy}`)
                       .then(() => {
                         alert('Link copied to clipboard!');
                       })}
-                      >Copy   <i class="far fa-copy"></i></h4>
-                <h4 onClick={() => handleDeletMenu(uploads)}>Delete  <i class="fas fa-trash-alt"></i></h4>
+                      >Copy   <i className="far fa-copy"></i></h4>
+                <h4 onClick={() => handleDeletMenu(uploads)}>Delete  <i className="fas fa-trash-alt"></i></h4>
                 </div>
                 </div>
                   ))}
@@ -452,7 +452,7 @@ useEffect(() => {
                 <span className='span1'>
                 <span className='span2'>
                 <span className='span3'>
-                <i class="fas fa-upload"></i>
+                <i className="fas fa-upload"></i>
                 </span>
                 </span>
                 </span>

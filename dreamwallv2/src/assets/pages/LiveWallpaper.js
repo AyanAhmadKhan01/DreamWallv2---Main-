@@ -56,11 +56,11 @@ function LiveWallpaper() {
         <>
         <div className="explore-container">
       <div className="mini-container">
-      <i class="fa-solid fa-bars"  onClick={() => {handleClass(); handleSideMenu();}} style={{ display: hideSideMenu ? "block" : "none" }}></i>
+      <i className="fa-solid fa-bars"  onClick={() => {handleClass(); handleSideMenu();}} style={{ display: hideSideMenu ? "block" : "none" }}></i>
         <div className={`left-sidebar-container ${menuClass}`} >
           <div className="left-sidebar-section">
             <div className="left-sidear-top">
-            <h3>Side Menu</h3>  <i class="fas fa-bars-staggered"  onClick={() => {handleClass(); handleSideMenu();}}></i>
+            <h3>Side Menu</h3>  <i className="fas fa-bars-staggered"  onClick={() => {handleClass(); handleSideMenu();}}></i>
           </div>    
           <Link to={'/explore'}> 
     <div className={`left-sidebar ${activeBar === 'ALL' ? 'active' : ''}`} onClick={() => handleDeviceClick('ALL')}> 
@@ -101,18 +101,18 @@ function LiveWallpaper() {
               >Pc</h4>
               </div>
               <div className="choose-wallpaper-container" ref={dropdownRef}>
-              <button onClick={handleChooseDropdown} className="choose-wallpaper-btn"><i class="fas fa-filter"></i> <span>Sort:</span>  {sort} <i class="fas fa-angle-down"></i></button>
+              <button onClick={handleChooseDropdown} className="choose-wallpaper-btn"><i class="fas fa-filter"></i> <span>Sort:</span>  {sort} <i className="fas fa-angle-down"></i></button>
               {chooseWallpaper && (
         <div className="choose-wallpaper">
           <div className="mini-choose-wallpaper-conatiner">
           <div className="choose-wallpaper-dropdown"> 
-          <i class="fas fa-random"></i> Random
+          <i className="fas fa-random"></i> Random
           </div>
           <div className="choose-wallpaper-dropdown" >
-          <i class="fas fa-clock"></i> Recent
+          <i className="fas fa-clock"></i> Recent
           </div>
           <div className="choose-wallpaper-dropdown">
-          <i class="fas fa-chart-line"></i> Downloads
+          <i className="fas fa-chart-line"></i> Downloads
           </div>
           </div>
         </div>

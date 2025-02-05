@@ -84,27 +84,28 @@ function Profile() {
           <div className="profile-category">
             <div className="profile-links">
           <h6 onClick={() => handlePageLoad('wallpapers')}>Wallpapers</h6>
-          <h6 onClick={() => handlePageLoad('post')}>Post</h6>
-          <h6 onClick={() => handlePageLoad('about')}>About</h6>
+          {/* <h6 onClick={() => handlePageLoad('post')}>Post</h6>
+          <h6 onClick={() => handlePageLoad('about')}>About</h6> */}
+          </div>
+          </div>
           </div>
           {profileSection === 'wallpapers' && (
             <div className="wallpaper-container-section">
               <h1>wallpaper</h1>
-              <div className="flex-wrap-conatiner">
-               
+              <div className="flex-wrap-conatiner"> 
               {profileupload
               .filter((profileuploads) => profile.username === profileuploads.uploaderName)
-              .map((profileUploads) => (
-                <Link to={`https://dreamwallv2.vercel.app/explore/${profileUploads.linkCopy}`} >
-              <div className="wallpaper-container-mini-section">
+              .map((profileUploads, index) => (
+                <div className="wallpaper-container-mini-section">
+                <Link to={`https://dreamwallv2.vercel.app/explore/${profileUploads.linkCopy}`} key={index}>
                 <img src={profileUploads.imgLink}/>
                 <h2>{profileUploads.wallpaperName}</h2>
                 <div className="icons-section">
-                <h3><i class="fas fa-heart"></i> {profileUploads.likes}</h3>
-                <h3><i class="far fa-arrow-alt-circle-down"></i>  {profileUploads.downloads}</h3>
+                <h3><i className="fas fa-heart"></i> {profileUploads.likes}</h3>
+                <h3><i className="far fa-arrow-alt-circle-down"></i>  {profileUploads.downloads}</h3>
                 </div> 
-              </div>      
               </Link>
+              </div>  
                 ))}
                  
                   </div>
@@ -124,8 +125,7 @@ function Profile() {
           )}
           </div>
           </div>
-          </div>
-          </div>
+       
         </>
       ) : (
 <div className="profile-section">

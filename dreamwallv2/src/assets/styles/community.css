@@ -8,24 +8,25 @@
     
 
 .community-container {
-    display: flex;
-    justify-content: center;
-    color: #f5faf5 ;
-    
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
 }
 
-.dreamwall-banner {
-    width: 1200px;
-    height: 300px;
-    border-radius: 20px;
-    object-fit: cover;
-    margin-top: 50px;
-    box-shadow: 0px 0px 20px black;
+.community-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1600px;
+  margin: auto;
 }
 
 .community-container h1 {
     text-align: center;
-    font-size: 96px;
+    font-size: clamp(24px, 7.5vw, 96px);
+    color: white;
 }
 
 .community-container h2 {
@@ -40,7 +41,8 @@
 
 .community-container input {
     font-size: 18px;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     padding: 15px 20px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.05);
@@ -55,9 +57,11 @@
 }
 
 .community-profile-container {
-    width: 500px;
-    margin-left: auto;
-    translate: -50px -120px;
+    max-width: 500px;
+    translate: 0px;
+    float: left;
+    margin: auto;
+    margin: 10px;
     text-align: center;
 }
 
@@ -102,7 +106,8 @@ border-radius: 20px 20px 0px 0px;
    cursor: pointer;
    border: 3px solid rgba(255, 255, 255, 0.05);
    height: 260px;
-   width: 500px;
+   max-width: 500px;
+   width: 100%;
 }
 
 .community-profile:hover {
@@ -187,3 +192,9 @@ border-radius: 20px 20px 0px 0px;
   .no-profile-found-mini-container span {
     color: #0cbb40;
   }
+
+@media (max-width: 550px) {
+  .community-container input {
+    max-width: 300px;
+  }
+}

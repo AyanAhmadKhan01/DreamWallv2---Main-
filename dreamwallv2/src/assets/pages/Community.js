@@ -114,12 +114,11 @@ const currentProfile = filter.slice(firstProfile, lastProfile);
     return (
         <>
         <div className="community-container">
-        <div className="community-section">
-     
             <h1>DreamWall Community</h1>
             <br />
             <input type="text" placeholder="Enter Their Username" onChange={handleUserSearch}/>
             <h2>Find A User? | Example Name <span>DreamWall</span></h2>
+            <div className="community-section">
             {currentProfile.length > 0 ? (
   currentProfile.map((data, index) => (
     <div className="community-profile-container" key={data.profileUrl || index}>
@@ -147,7 +146,7 @@ const currentProfile = filter.slice(firstProfile, lastProfile);
       {noProfile && (
     <div className="no-profile-found-container">
      <div className="no-profile-found-mini-container">
-     <i class="fas fa-user-alt"></i>
+     <i className="fas fa-user-alt"></i>
      <h1>No Profile <span>Found</span> </h1>
      </div>
     </div>

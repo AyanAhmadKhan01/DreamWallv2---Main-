@@ -137,14 +137,14 @@ const handleCloseNavbar = () => {
             <Link to="/signup" className="loginbtn navbar-logo-responsive">Signup</Link>
           </li>
         )}
-        <i class="fas fa-bars" onClick={handleNavbar}></i>
+        <i className="fas fa-bars" onClick={handleNavbar}></i>
           </div>
           {viewNavbar && (
 
         
         <div className={`navbar ${isAnimation ? 'inView' : 'notView'}`}>
           <ul> 
-              <i class="fa-solid fa-xmark" onClick={handleCloseNavbar}></i>
+              <i className="fa-solid fa-xmark" onClick={handleCloseNavbar}></i>
             <li><Link to='/home'>Home</Link></li>
             <li><Link to='/explore'>Explore</Link></li>
             <li className="getting-started-navbar">

@@ -240,28 +240,28 @@ const handleCancelRequest = () => {
                  <div className="left-dashboard">
                                 <div className="left-dash-bar">
                                   <div className="left-section">
-                                  <i class="fa-solid fa-xmark" onClick={CloseleftMenu}></i>
-                              <Link to={'/dashboard'}><h3><i class="fas fa-home"></i> Dashbaord</h3>  </Link>
-                              <h3 onClick={handleUploadClick}><i class="fas fa-cloud"></i> Upload</h3> 
-                               <Link to={'/dashboard/analytics'}><h3><i class="fas fa-chart-line"></i>  Analytics</h3></Link>
-                               <Link to={'/dashboard/settings'}><h3><i class="fas fa-user-cog"></i> Settings</h3></Link>
-                               <h3 onClick={handleLogout} className="log-out-btn"><i class="fas fa-sign-out-alt"></i> Logout</h3> 
+                                  <i className="fa-solid fa-xmark" onClick={CloseleftMenu}></i>
+                              <Link to={'/dashboard'}><h3><i className="fas fa-home"></i> Dashbaord</h3>  </Link>
+                              <h3 onClick={handleUploadClick}><i className="fas fa-cloud"></i> Upload</h3> 
+                               <Link to={'/dashboard/analytics'}><h3><i className="fas fa-chart-line"></i>  Analytics</h3></Link>
+                               <Link to={'/dashboard/settings'}><h3><i className="fas fa-user-cog"></i> Settings</h3></Link>
+                               <h3 onClick={handleLogout} className="log-out-btn"><i className="fas fa-sign-out-alt"></i> Logout</h3> 
                                </div>
                                </div>
                               </div>
             </div>
             <div className="right-settings">
-                <h1>Settings <i class="fas fa-user-cog"></i></h1> 
+                <h1>Settings <i className="fas fa-user-cog"></i></h1> 
                 <div className="right-mini-settings">
                 <div className="right-settings-section">
                     <div className="right-setting-box">
-                    <i class="fas fa-signature"></i>
+                    <i className="fas fa-signature"></i>
                     <span>Not Available</span>
                     <h4>Change Name</h4>
                     <input type="text" />
                     </div>
                     <div className="right-setting-box">
-                    <i class="fas fa-unlock"></i>
+                    <i className="fas fa-unlock"></i>
                     <h4>Change Password</h4>
                     <input type="text" 
                     name="password"
@@ -270,7 +270,7 @@ const handleCancelRequest = () => {
                 
                     </div>
                     <div className="right-setting-box">
-                    <i class="fas fa-user-minus"></i>   
+                    <i className="fas fa-user-minus"></i>   
                     <span>{deleteTimer && isDeleteActive ? `Delete in: ${deleteTimer}` : "No Delete Request"}</span>
                     {!isDeleteActive ? (
       <h3 onClick={handleDeleteRequest}>Delete Account</h3>
@@ -309,7 +309,7 @@ const handleCancelRequest = () => {
              {isSuccess && (
               <div className={`success-msg ${successAnimating ? "success-alert-box-show" : "success-alert-box-hide"}`}>
                 <div className="success-msg-section">
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-circle-check"></i>
                 <h4>Successfully Saved</h4>
                 </div>
               </div>

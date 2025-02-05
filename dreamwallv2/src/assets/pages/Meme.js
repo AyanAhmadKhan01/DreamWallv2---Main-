@@ -74,30 +74,30 @@ function Meme() {
         <> 
          <div className="explore-container">
       <div className="mini-container">
-      <i class="fa-solid fa-bars"  onClick={() => {handleClass(); handleSideMenu();}} style={{ display: hideSideMenu ? "block" : "none" }}></i>
+      <i className="fa-solid fa-bars"  onClick={() => {handleClass(); handleSideMenu();}} style={{ display: hideSideMenu ? "block" : "none" }}></i>
         <div className={`left-sidebar-container ${menuClass}`} >
           <div className="left-sidebar-section">
             <div className="left-sidear-top">
-            <h3>Side Menu</h3>  <i class="fas fa-bars-staggered"  onClick={() => {handleClass(); handleSideMenu();}}></i>
+            <h3>Side Menu</h3>  <i className="fas fa-bars-staggered"  onClick={() => {handleClass(); handleSideMenu();}}></i>
           </div>    
           <Link to={'/explore'}> 
     <div className={`left-sidebar ${activeBar === 'ALL' ? 'active' : ''}`} onClick={() => handleDeviceClick('ALL')}> 
-     <h3 onClick={() => handleActiveBar('ALL')}><i class="fa fa-home"></i> All</h3>
+     <h3 onClick={() => handleActiveBar('ALL')}><i className="fa fa-home"></i> All</h3>
     </div>
     </Link>
     <Link to={'/explore'}> 
     <div className={`left-sidebar ${activeBar === 'Wallpapers' ? 'active' : ''}`}>
-     <h3  onClick={() => handleActiveBar('Wallpapers')}><i class="fa-solid fa-image"></i> Wallpapers</h3>
+     <h3  onClick={() => handleActiveBar('Wallpapers')}><i className="fa-solid fa-image"></i> Wallpapers</h3>
     </div>
     </Link>
     <Link to={'/explore/meme'}>
     <div className={`left-sidebar ${activeBar === 'Memes' ? 'active' : ''}`}>
-     <h3 onClick={() => handleActiveBar('Memes')}><i class="fa-regular fa-face-laugh"></i>Memes</h3>
+     <h3 onClick={() => handleActiveBar('Memes')}><i className="fa-regular fa-face-laugh"></i>Memes</h3>
     </div>
     </Link>
     <Link to={'/explore/livewallpaper'}>
     <div className={`left-sidebar ${activeBar === 'Fan Art' ? 'active' : ''}`}>
-     <h3 onClick={() => handleActiveBar('Fan Art')} ><i class="fa-solid fa-brush"></i> Live Wallpaper</h3>
+     <h3 onClick={() => handleActiveBar('Fan Art')} ><i className="fa-solid fa-brush"></i> Live Wallpaper</h3>
     </div>
     </Link>
     </div>
@@ -119,18 +119,18 @@ function Meme() {
               >Pc</h4>
               </div>
               <div className="choose-wallpaper-container" ref={dropdownRef}>
-              <button onClick={handleChooseDropdown} className="choose-wallpaper-btn"><i class="fas fa-filter"></i> <span>Sort:</span>  {sort} <i class="fas fa-angle-down"></i></button>
+              <button onClick={handleChooseDropdown} className="choose-wallpaper-btn"><i className="fas fa-filter"></i> <span>Sort:</span>  {sort} <i className="fas fa-angle-down"></i></button>
               {chooseWallpaper && (
         <div className="choose-wallpaper">
           <div className="mini-choose-wallpaper-conatiner">
           <div className="choose-wallpaper-dropdown"> 
-          <i class="fas fa-random"></i> Random
+          <i className="fas fa-random"></i> Random
           </div>
           <div className="choose-wallpaper-dropdown" >
-          <i class="fas fa-clock"></i> Recent
+          <i className="fas fa-clock"></i> Recent
           </div>
           <div className="choose-wallpaper-dropdown">
-          <i class="fas fa-chart-line"></i> Downloads
+          <i className="fas fa-chart-line"></i> Downloads
           </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ function Meme() {
            </div>
            
            <Link to={'/explore'}>
-        <h2 className="back-btn"><i class="fa-solid fa-left-long"></i> Back</h2>
+        <h2 className="back-btn"><i className="fa-solid fa-left-long"></i> Back</h2>
         </Link>
     <div className="meme-page"> 
         <div className="meme-soon">

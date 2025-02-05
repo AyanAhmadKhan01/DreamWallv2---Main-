@@ -33,7 +33,7 @@ function Analytics() {
                                      </div>
                    </div>
                    <div className="right-settings">
-                   <h1>Analytics <i class="fas fa-chart-pie"></i></h1>
+                   <h1>Analytics <i className="fas fa-chart-pie"></i></h1>
                    <h2>Under Development</h2>
             
                </div>

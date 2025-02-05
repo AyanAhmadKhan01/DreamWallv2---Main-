@@ -248,34 +248,34 @@ const handleActiveBar = (active) => {
                    {copyWallpaper && (
                 <div className={`wallpaper-link-copy ${isAnimating ? 'show' : 'hide'}`}>
                   <div className="wallpaper-link-copy-section">
-                    <h1><span><i class="fas fa-check"></i></span>Link copied to clipboard! <i class="fas fa-times" onClick={handleCopyAlert}></i></h1>
+                    <h1><span><i className="fas fa-check"></i></span>Link copied to clipboard! <i className="fas fa-times" onClick={handleCopyAlert}></i></h1>
                   </div>
                 </div>
                )}
     <div className="explore-container">
       <div className="mini-container">
-      <i class="fa-solid fa-bars"  onClick={() => {handleClass(); handleSideMenu();}} style={{ display: hideSideMenu ? "block" : "none" }}></i>
+      <i className="fa-solid fa-bars"  onClick={() => {handleClass(); handleSideMenu();}} style={{ display: hideSideMenu ? "block" : "none" }}></i>
         <div className={`left-sidebar-container ${menuClass}`} >
           <div className="left-sidebar-section">
             <div className="left-sidear-top">
-            <h3>Side Menu</h3>  <i class="fas fa-bars-staggered"  onClick={() => {handleClass(); handleSideMenu();}}></i>
+            <h3>Side Menu</h3>  <i className="fas fa-bars-staggered"  onClick={() => {handleClass(); handleSideMenu();}}></i>
           </div>    
           <Link to={'/explore'}> 
     <div className={`left-sidebar ${activeBar === 'ALL' ? 'active' : ''}`} onClick={() => handleDeviceClick('ALL')}> 
-     <h3 onClick={() => handleActiveBar('ALL')}><i class="fa fa-home"></i> All</h3>
+     <h3 onClick={() => handleActiveBar('ALL')}><i className="fa fa-home"></i> All</h3>
     </div>
     </Link>
     <div className={`left-sidebar ${activeBar === 'Wallpapers' ? 'active' : ''}`}>
-     <h3  onClick={() => handleActiveBar('Wallpapers')}><i class="fa-solid fa-image"></i> Wallpapers</h3>
+     <h3  onClick={() => handleActiveBar('Wallpapers')}><i className="fa-solid fa-image"></i> Wallpapers</h3>
     </div>
     <Link to={'/explore/meme'}>
     <div className={`left-sidebar ${activeBar === 'Memes' ? 'active' : ''}`}>
-     <h3 onClick={() => handleActiveBar('Memes')}><i class="fa-regular fa-face-laugh"></i>Memes</h3>
+     <h3 onClick={() => handleActiveBar('Memes')}><i className="fa-regular fa-face-laugh"></i>Memes</h3>
     </div>
     </Link>
     <Link to={'/explore/livewallpaper'}>
     <div className={`left-sidebar ${activeBar === 'Fan Art' ? 'active' : ''}`}>
-     <h3 onClick={() => handleActiveBar('Fan Art')} ><i class="fa-solid fa-brush"></i> Live Wallpaper</h3>
+     <h3 onClick={() => handleActiveBar('Fan Art')} ><i className="fa-solid fa-brush"></i> Live Wallpaper</h3>
     </div>
     </Link>
     </div>
@@ -297,18 +297,18 @@ const handleActiveBar = (active) => {
               >Pc</h4>
               </div>
               <div className="choose-wallpaper-container" ref={dropdownRef}>
-              <button onClick={handleChooseDropdown} className="choose-wallpaper-btn"><i class="fas fa-filter"></i> <span>Sort:</span>  {sort} <i class="fas fa-angle-down"></i></button>
+              <button onClick={handleChooseDropdown} className="choose-wallpaper-btn"><i className="fas fa-filter"></i> <span>Sort:</span>  {sort} <i className="fas fa-angle-down"></i></button>
               {chooseWallpaper && (
         <div className="choose-wallpaper">
           <div className="mini-choose-wallpaper-conatiner">
           <div className="choose-wallpaper-dropdown" onClick={handelRandomWallpaper}> 
-          <i class="fas fa-random"></i> Random
+          <i className="fas fa-random"></i> Random
           </div>
           <div className="choose-wallpaper-dropdown" onClick={handleRecentClick }  >
-          <i class="fas fa-clock"></i> Recent
+          <i className="fas fa-clock"></i> Recent
           </div>
           <div className="choose-wallpaper-dropdown" onClick={handleMostDownloadedClick}>
-          <i class="fas fa-chart-line"></i> Downloads
+          <i className="fas fa-chart-line"></i> Downloads
           </div>
           </div>
         </div>
@@ -333,10 +333,10 @@ const handleActiveBar = (active) => {
 
         <div className="masonry">
     {currentItems.length > 0 ? (
-          currentItems.map((wallpaper) => (
-            <div className="explore-card" key={wallpaper.id || wallpaper.wallpaperName}>
+          currentItems.map((wallpaper, index) => (
+            <div className="explore-card" key={index}>
               <Link to={`/explore/${wallpaper.linkCopy}`}>
-              <img src={wallpaper.imgLink} alt={wallpaper.wallpaperName} />
+              <img src={wallpaper.imgLink} />
              </Link>
               <div className="leftbar">
                 <div className="leftbar-section">
@@ -383,8 +383,8 @@ const handleActiveBar = (active) => {
                 
                 {profile
             .filter((profileItem) => profileItem.username === wallpaper.uploaderName) 
-            .map((profileItem) => (
-              <h1>
+            .map((profileItem ,index) => (
+              <h1 key={index}> 
           <Link to={`/profile/${profileItem.profileUrl}`} key={profileItem.profileUrl} className="uploader-name">
              {wallpaper.uploaderName}
          </Link>
@@ -401,7 +401,7 @@ const handleActiveBar = (active) => {
                {noWallpaper && (
            <div className="no-wallpaper-found-container">
             <div className="no-wallpaper-found-mini-container">
-            <i class="fa-regular fa-image"></i>
+            <i className="fa-regular fa-image"></i>
             <h1>No Wallpaper <span>Found</span> </h1>
             </div>
            </div>

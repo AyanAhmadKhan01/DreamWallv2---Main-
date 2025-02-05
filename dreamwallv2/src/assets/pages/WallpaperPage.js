@@ -8,6 +8,18 @@ function WallpaperPage() {
     const [authenticate, setAuthenticate ] = useState(null);
     const timers = useRef([]);
 
+useEffect(() => {
+  const handleScrollTop = () => {
+  window.scrollTo({
+    top: 0,
+  })
+}
+if(document.readyState === 'complete') {
+  handleScrollTop();
+}
+}, []);
+
+
     useEffect(() => {
       const authenticateUser =  async () => {   
       try {
@@ -47,6 +59,7 @@ function WallpaperPage() {
     }
     fetchUserProfile();
     }, [])
+
 
 
     const [isLiked ,setIsLiked] = useState(false);
@@ -201,7 +214,6 @@ function WallpaperPage() {
       setComments((prev) => ({ ...prev, [name]: value }));
     };
 
-    console.log(authenticate)
     const [goLogin, setGoLogin] = useState(false);
 
     useEffect(() => {
@@ -245,7 +257,9 @@ const [isDisabled, setIsDisabled] = useState(false);
 const [ viewComments, setViewComments ] = useState([]);
 
 useEffect(() => {
+  if(!wallpaperPage || !wallpaperPage._id ) return; 
   const fetchComments = async () => {
+
   try {
     const response = await fetch(`${process.env.REACT_APP_VIEW_COMMENT}?commentId=${wallpaperPage._id}`);
     if(!response.ok) {
@@ -254,11 +268,11 @@ useEffect(() => {
     const data = await response.json();
     setViewComments(data)
   } catch (err) {
-    console.error('Error', err)
+    console.error('Error fetching comments:', err);
   }
  }
-fetchComments()
-}, [wallpaperPage])
+fetchComments();
+},[wallpaperPage])
 
 
 
@@ -302,19 +316,19 @@ const deleteComment = async (commentId) => {
                 </div>
                 <div className="wallpaper-page-section">
                     <div className="wallpaper-page-text-section">
-                <h1><i class="fas fa-signature"></i> Name  <span>{wallpaperPage.wallpaperName}</span></h1>
-                <h3> <i class="fas fa-download"></i> Downloads   <span>{wallpaperPage.downloads} </span></h3>
-                <h3> <i class="fa fa-calendar"></i> Upload Date  <span>{new Date(wallpaperPage.uploadDate).toLocaleDateString('en-US', {
+                <h1><i className="fas fa-signature"></i> Name  <span>{wallpaperPage.wallpaperName}</span></h1>
+                <h3> <i className="fas fa-download"></i> Downloads   <span>{wallpaperPage.downloads} </span></h3>
+                <h3> <i className="fa fa-calendar"></i> Upload Date  <span>{new Date(wallpaperPage.uploadDate).toLocaleDateString('en-US', {
           day: 'numeric',
           month: 'long',
           year: 'numeric',
          })} </span></h3>
-         <h3> <i class="fa fa-desktop"></i> Resolution  <span>{wallpaperPage.resolution} </span></h3>
-         <h3> <i class="fa fa-user"></i> Uploader  <span>{wallpaperPage.uploaderName}</span></h3>
-         <h3> <i class="fas fa-hashtag"></i> Genre <span className="wallpaper-tags">#{wallpaperPage.genre}</span> </h3>
+         <h3> <i className="fa fa-desktop"></i> Resolution  <span>{wallpaperPage.resolution} </span></h3>
+         <h3> <i className="fa fa-user"></i> Uploader  <span>{wallpaperPage.uploaderName}</span></h3>
+         <h3> <i className="fas fa-hashtag"></i> Genre <span className="wallpaper-tags">#{wallpaperPage.genre}</span> </h3>
                 </div>
                 <div className="wallpaper-page-btn">
-                <h5 onClick={() => {copyToClipboard();}}  disabled={isButtonDisabled}><i class="far fa-copy"></i></h5>
+                <h5 onClick={() => {copyToClipboard();}}  disabled={isButtonDisabled}><i className="far fa-copy"></i></h5>
                 
                 <h6 onClick={handleLike} className="like-wallpaper">
                 <i className={`${isLiked ? 'fas fa-heart liked' : 'far fa-heart'}`}></i> {wallpaperPage?.likes}
@@ -324,7 +338,7 @@ const deleteComment = async (commentId) => {
                {copyWallpaper && (
                 <div className={`wallpaper-link-copy ${isAnimating ? 'show' : 'hide'}`}>
                   <div className="wallpaper-link-copy-section">
-                    <h1><span><i class="fas fa-check"></i></span>Link copied to clipboard! <i class="fas fa-times" onClick={handleCopyAlert}></i></h1>
+                    <h1><span><i className="fas fa-check"></i></span>Link copied to clipboard! <i className="fas fa-times" onClick={handleCopyAlert}></i></h1>
                   </div>
                 </div>
                )}
@@ -340,12 +354,12 @@ const deleteComment = async (commentId) => {
                       <button className="create-comment-btn" onClick={createComment} disabled={isDisabled}>Comment</button>
                       </>
                     )}
-                      {viewComments.map((comment) => (
-              <div className="comment-container">
+                      {viewComments.map((comment, index) => (
+              <div className="comment-container" key={index}>
               {profile
               .filter((profileItem) => (profileItem.username === comment.user))
-         .map((profileItem) => (
-    <Link key={profileItem._id} to={`/profile/${profileItem.profileUrl}`}>
+         .map((profileItem, index) => (
+    <Link key={index} to={`/profile/${profileItem.profileUrl}`}>
       <div className="comment-section">
       <div className="left-comment-side">
       <img src={profileItem.profileLogo} />

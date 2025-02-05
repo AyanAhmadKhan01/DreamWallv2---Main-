@@ -142,11 +142,11 @@ export function Introduction() {
   <span className="steps">Step 1 <i className="fa-solid fa-check"></i></span> Login or Register - Access the DreamWall dashboard using your credentials.
 </p>
 <div className="img-div">
-
-<img src="/img/Register.png" alt="register" />
-
+  <Link to={'/signup'} target="_blank">
+<img src="/img/registerimg.png" alt="register" />
+</Link>
 <Link to={'/login'} target="_blank">
-<img src="/img/Login.png" alt="login" />
+<img src="/img/Loginimg.png" alt="login" />
 </Link>
 </div>
       <p>

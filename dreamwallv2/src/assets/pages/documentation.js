@@ -43,9 +43,8 @@ function Documentation() {
             <div className="documentation-section">           
                  <SideDoucmentMenu sideMenu={sideMenu} isAnimation={isAnimation} ClosesideMenu={ClosesideMenu}/>
                 <div className="right-documentation">
-                {menuBtn && ( 
-                    <i class="fa-solid fa-bars" onClick={OpenSideMenu}></i>
-              )}
+                <i class="fa-solid fa-bars" onClick={OpenSideMenu}></i>
+            
                 <Routes>
                         <Route path="/" element={<Introduction />} />
                         <Route path="/howtoupload" element={<HowToUpload />} />

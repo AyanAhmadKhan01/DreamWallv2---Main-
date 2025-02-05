@@ -9,12 +9,6 @@ function WallpaperPage() {
     const timers = useRef([]);
 
     useEffect(() => {
-      window.scrollTo({
-        top: '0px',
-      })
-    })
-
-    useEffect(() => {
       const authenticateUser =  async () => {   
       try {
         const response = await fetch(process.env.REACT_APP_USER_DATA, {
@@ -207,6 +201,17 @@ function WallpaperPage() {
       setComments((prev) => ({ ...prev, [name]: value }));
     };
 
+    console.log(authenticate)
+    const [goLogin, setGoLogin] = useState(false);
+
+    useEffect(() => {
+      if(authenticate && authenticate.message === "Access Denied. No token Provided") {
+        setGoLogin(false);
+      } else {
+        setGoLogin(true)
+      }
+    },[authenticate])
+
 const [isDisabled, setIsDisabled] = useState(false);
 
   const createComment = async () => {
@@ -227,6 +232,7 @@ const [isDisabled, setIsDisabled] = useState(false);
    if(!response.ok) {
     console.error('Failed to create comment');
    }
+   
    window.location.reload();
   } catch {
     console.error('Failed To Send comment to server');
@@ -286,7 +292,6 @@ const deleteComment = async (commentId) => {
 
     return( 
 
-
     <div className="wallpaperpage-container">
         {wallpaperPage ? (
             <>
@@ -323,6 +328,8 @@ const deleteComment = async (commentId) => {
                   </div>
                 </div>
                )}
+                    {goLogin && (
+                      <>
                <textarea
                 name="commentText" 
                 id="comment"
@@ -331,6 +338,8 @@ const deleteComment = async (commentId) => {
                 value={comments.commentText} 
            />
                       <button className="create-comment-btn" onClick={createComment} disabled={isDisabled}>Comment</button>
+                      </>
+                    )}
                       {viewComments.map((comment) => (
               <div className="comment-container">
               {profile

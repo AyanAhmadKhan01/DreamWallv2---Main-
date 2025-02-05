@@ -168,6 +168,7 @@ border-radius:20px;
 display: flex;
 margin: 20px 0px;
 gap: 20px;
+margin-right: 15px;
 }
 
 .img-div img {
@@ -231,10 +232,11 @@ color: #33d864;
 @media (max-width: 1000px) {
 .left-documentation-conatiner {
   position: fixed;
-  left: 0px;
+  left: -10px;
   top: 0px;
   background-color: #060e06;
   height: 100vh;
+  z-index: 2;
 }
 
 .left-documentation-show {
@@ -249,6 +251,7 @@ color: #33d864;
 
 
 .left-documentation-conatiner .fa-bars {
+  display: block;
   float: right;
   color: #f5faf5;
   margin-top: 20px;
@@ -263,11 +266,34 @@ color: #33d864;
 }
 
 .right-documentation .fa-bars {
-  display: inline-block;
+  opacity: 1;
   transition: .3s; 
+  z-index: 0;
  }
 
 .right-documentation .fa-bars:hover {
   scale: 1.070;
 }
+}
+
+@media (max-width: 425px) {
+  .right-documentation {
+    margin: 0px 20px;
+  }
+  .right-documentation p {
+    margin: 25px 0px;
+  }
+}
+
+@media (max-width: 340px) {
+  .left-documentation-conatiner  {
+    left: -20px;
+  }
+  .right-documentation {
+   width: 300px;
+
+  }
+  .right-documentation p {
+    margin: 25px 0px;
+  }
 }

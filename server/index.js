@@ -471,7 +471,9 @@ app.post('/api/user/comment', async (req, res) => {
     if (!wallpaper) {
       return res.status(404).json({ message: 'Wallpaper not found' });
     }
-
+    if(!user) {
+      return res.status(404).json({message: 'User not found'});
+    }
     const comment = new Comment({
       user,
       userLogo,

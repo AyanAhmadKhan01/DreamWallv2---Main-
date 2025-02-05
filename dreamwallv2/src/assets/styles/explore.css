@@ -618,6 +618,7 @@ height: 2px;
     border-radius: 20px;
     padding: 20px 30px;
     border-bottom: 20px solid #4e524e;
+    min-width: auto;
   }
 
   .wallpaper-page-text-section span {

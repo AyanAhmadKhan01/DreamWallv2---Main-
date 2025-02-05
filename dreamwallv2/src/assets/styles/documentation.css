@@ -60,7 +60,7 @@ color: rgba(255, 255, 255, 0.8);
 }
 
 .right-documentation .fa-bars {
-display: none;
+opacity: 0;
 }
 
 .documentation-main-container h1 {
@@ -249,7 +249,6 @@ color: #33d864;
 
 
 .left-documentation-conatiner .fa-bars {
-  display: block;
   float: right;
   color: #f5faf5;
   margin-top: 20px;

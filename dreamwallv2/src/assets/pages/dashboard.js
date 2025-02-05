@@ -213,11 +213,11 @@ useEffect(() => {
           <div className="left-dashboard">
             <div className="left-dash-bar">
               <div className="left-section">
-           <h3><i class="fas fa-home"></i> Loading...</h3>    
-           <h3><i class="fas fa-cloud"></i>Loading...</h3>
-             <Link><h3><i class="fas fa-chart-line"></i>  Loading...</h3></Link>
-           <Link><h3><i class="fas fa-user-cog"></i> Loading...</h3></Link>
-           <h3 className="log-out-btn"><i class="fas fa-sign-out-alt"></i> Loading...</h3> 
+           <h3><i className="fas fa-home"></i> Loading...</h3>    
+           <h3><i className="fas fa-cloud"></i>Loading...</h3>
+             <Link><h3><i className="fas fa-chart-line"></i>  Loading...</h3></Link>
+           <Link><h3><i className="fas fa-user-cog"></i> Loading...</h3></Link>
+           <h3 className="log-out-btn"><i className="fas fa-sign-out-alt"></i> Loading...</h3> 
            </div>
            </div>
           </div>
@@ -226,21 +226,21 @@ useEffect(() => {
                 <div className="analytics">
             <div className="right-dash-bar">
               <h1>Loading...</h1>  
-               <i class="fas fa-download"></i>
+               <i className="fas fa-download"></i>
                <h2>Loading...</h2>
                <h3>Loading...</h3>
                <h4>Loading...</h4>
             </div>
             <div className="right-dash-bar">
               <h1>Loading...</h1> 
-                <i class="far fa-thumbs-up"></i>
+                <i className="far fa-thumbs-up"></i>
                 <h2>Loading...</h2>
                 <h3>Loading...</h3>
                <h4>Loading...</h4>
             </div>
             <div className="right-dash-bar">
               <h1>Loading...</h1>  
-              <i class="fas fa-cloud-upload-alt"></i>
+              <i className="fas fa-cloud-upload-alt"></i>
               <h2>Loading...</h2>
               <h3>Loading...</h3>
                <h4>Loading...</h4>
@@ -339,13 +339,13 @@ useEffect(() => {
 
                   <div className={`left-section ${isAnimating ? 'dashview': 'notdashview'}`}>
                  <i className="fa-solid fa-xmark" onClick={CloseleftMenu}></i>
-               <h3><i class="fas fa-home"></i> Dashbaord</h3>  
+               <h3><i className="fas fa-home"></i> Dashbaord</h3>  
               
-               <h3 onClick={handleUploadMenu}><i class="fas fa-cloud"></i> Upload</h3>
+               <h3 onClick={handleUploadMenu}><i className="fas fa-cloud"></i> Upload</h3>
               
-                 <Link to={'/dashboard/analytics'}><h3><i class="fas fa-chart-line"></i>  Analytics</h3></Link>
-               <Link to={'/dashboard/settings'}><h3><i class="fas fa-user-cog"></i> Settings</h3></Link>
-               <h3 onClick={logoutMenu} className="log-out-btn"><i class="fas fa-sign-out-alt"></i> Logout</h3> 
+                 <Link to={'/dashboard/analytics'}><h3><i className="fas fa-chart-line"></i>  Analytics</h3></Link>
+               <Link to={'/dashboard/settings'}><h3><i className="fas fa-user-cog"></i> Settings</h3></Link>
+               <h3 onClick={logoutMenu} className="log-out-btn"><i className="fas fa-sign-out-alt"></i> Logout</h3> 
                </div>
                 )}
                </div>
@@ -369,8 +369,8 @@ useEffect(() => {
                 <div className="right-section">   
                   {Array.isArray(analytics) && analytics
                   .filter((total) => userData.username === total._id)
-                  .map((total) => (
-                    <div className="analytics">
+                  .map((total, index) => (
+                    <div className="analytics" key={index}>
                 <div className="right-dash-bar">
                   <h1>Total Download</h1>  
                    <i className="fas fa-download"></i>

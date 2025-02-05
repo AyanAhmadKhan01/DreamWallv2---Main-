@@ -96,8 +96,8 @@ function Profile() {
               {profileupload
               .filter((profileuploads) => profile.username === profileuploads.uploaderName)
               .map((profileUploads, index) => (
-                <div className="wallpaper-container-mini-section">
-                <Link to={`https://dreamwallv2.vercel.app/explore/${profileUploads.linkCopy}`} key={index}>
+                <div className="wallpaper-container-mini-section" key={index}>
+                <Link to={`https://dreamwallv2.vercel.app/explore/${profileUploads.linkCopy}`}>
                 <img src={profileUploads.imgLink}/>
                 <h2>{profileUploads.wallpaperName}</h2>
                 <div className="icons-section">

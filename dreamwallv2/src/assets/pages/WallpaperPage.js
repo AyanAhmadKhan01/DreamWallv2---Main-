@@ -30,9 +30,7 @@ if(document.readyState === 'complete') {
           },
           credentials: 'include', 
         });
-        if(!response.ok) {
-          console.error('Failed to fetch Auth Api');
-        }
+    
         const data = await  response.json();
         setAuthenticate(data)
       } catch (err){
@@ -125,8 +123,6 @@ if(document.readyState === 'complete') {
       
           if (!response.ok) {
             console.error('Failed to update download count');
-          } else {
-            console.log('Successfully updated download count');
           }
           window.location.reload();
         } catch (error) {

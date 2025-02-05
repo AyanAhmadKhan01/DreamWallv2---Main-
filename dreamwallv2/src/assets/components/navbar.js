@@ -35,14 +35,8 @@ function Navbar() {
             if (profileResponse.ok) {
               const profileData = await profileResponse.json();
               setProfile(profileData); 
-            } else {
-              throw new Error('Failed to fetch profile');
-            }
-          } else {
-            throw new Error('Failed to match username');
-          }
-        } else {
-          throw new Error('Failed to fetch user data');
+            } 
+        } 
         }
       } catch (error) {
         console.error('Error:', error);

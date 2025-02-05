@@ -618,7 +618,7 @@ height: 2px;
     border-radius: 20px;
     padding: 20px 30px;
     border-bottom: 20px solid #4e524e;
-    min-width: auto;
+    width: 600px;
   }
 
   .wallpaper-page-text-section span {
@@ -905,6 +905,9 @@ margin-top: 20px;
   .comment-container p {
  translate: 85px -63px;
   }
+  .wallpaper-page-text-section {
+    width: 650px;
+   }
 }
 
 
@@ -930,6 +933,9 @@ margin-top: 20px;
   .comment-container p {
     max-width: 380px;
   }
+   .wallpaper-page-text-section {
+    width: 530px;
+   }
 }
 
 @media (max-width: 530px) {
@@ -948,6 +954,9 @@ margin-top: 20px;
     .comment-container p {
       max-width: 230px;
     }
+    .wallpaper-page-text-section {
+      width: 425px;
+     }
 }
 @media (max-width: 425px) {
   .wallpaper-page-section #comment {
@@ -970,6 +979,9 @@ margin-top: 20px;
  
     .comment-container p {
       translate: 65px -43px;
+       }
+       .wallpaper-page-text-section {
+        width: 370px;
        }
 }
 

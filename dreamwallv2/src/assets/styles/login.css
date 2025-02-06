@@ -63,3 +63,9 @@ margin-top: 17px;
 #login-btn:hover {
 background-color: #33D864;
 }
+
+
+.error-container {
+  position: absolute;
+  top: 0px;
+}

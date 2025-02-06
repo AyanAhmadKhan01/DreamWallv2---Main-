@@ -84,8 +84,9 @@ const Login = () => {
        
       </form>
      
-      
+      <div className="error-container">
       {message && <p>{message}</p>} 
+      </div>
     </div>
     </div>
     </div>

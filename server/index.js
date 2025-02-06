@@ -31,6 +31,12 @@ const likeLimiter = rateLimit({
   message: 'Too many requests, please try again later.',
 })
 
+const uploadLimit = rateLimit({
+  windowMs: 30000,
+  limit: 1,
+  message: 'Wait a while before uploading another wallpaper'
+})
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -260,6 +266,7 @@ app.post('/api/user/profile', async (req, res) => {
   }
 });
 
+app.use('/upload', uploadLimit);
 
 app.post('/upload', upload.single('file'), async (req, res) => {
   try {

@@ -11,6 +11,7 @@ const Dashboard = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [ yourUploads, setYourUploads ] = useState([]);
   const [formData, setFormData] = useState({
     wallpaperName: '',
     imgLink: '',
@@ -22,13 +23,18 @@ const Dashboard = () => {
     likedBy: '',
   });
 
+  const nameStore =(`${yourUploads.map((wallpaper) => wallpaper.wallpaperName)}`);
 
-  const upload = () => {
+  const upload = async() => {
     if (!file) {
-      setError('Please select a file to upload');
-      return;
+      alert('Please select a file to upload');
+      return false;
     }
 
+  if (nameStore.includes(formData.wallpaperName)) {
+    alert('The wallpaper name already exists');
+    return false;
+  }
     const data = new FormData();
     data.append('file', file);
     data.append('wallpaperName', formData.wallpaperName);
@@ -38,16 +44,17 @@ const Dashboard = () => {
     data.append('tags', formData.tags);
     data.append('deviceTags', formData.deviceTags);
     
-
-    axios
-      .post(process.env.REACT_APP_UPLOAD_WALLPAPER, data)
-      .then((res) => {
-      })
-      .catch((err) => {
+   try {
+    const response = await axios.post(process.env.REACT_APP_UPLOAD_WALLPAPER, data);
+    return true
+   } catch(err) {
         console.error(err);
         setError('Error uploading wallpaper');
-      });
-  };
+        return false;
+   }
+  }
+
+
 
 useEffect(() => {
   if(location.state?.triggerLogout) {
@@ -140,8 +147,6 @@ const CloseleftMenu = () => {
 }
 
 
-const [ yourUploads, setYourUploads ] = useState([]);
-
 const [deleteMenu, setDeleteMenu] = useState(false);
 const [selectedWallpaper, setSelectedWallpaper] = useState(null);
 
@@ -150,6 +155,7 @@ const handleDeletMenu = (uploads) => {
   setDeleteMenu((prev) => !prev)
   setSelectedWallpaper(uploads); 
 };
+
 
 const pagereload = () => {
   setTimeout(() => {
@@ -209,72 +215,6 @@ useEffect(() => {
 
   if (loading) {
     return <>
-    {/* <div className="dashboard-container">
-          <div className="left-dashboard">
-            <div className="left-dash-bar">
-              <div className="left-section">
-           <h3><i className="fas fa-home"></i> Loading...</h3>    
-           <h3><i className="fas fa-cloud"></i>Loading...</h3>
-             <Link><h3><i className="fas fa-chart-line"></i>  Loading...</h3></Link>
-           <Link><h3><i className="fas fa-user-cog"></i> Loading...</h3></Link>
-           <h3 className="log-out-btn"><i className="fas fa-sign-out-alt"></i> Loading...</h3> 
-           </div>
-           </div>
-          </div>
-          <div className="right-dashboard">
-            <div className="right-section">   
-                <div className="analytics">
-            <div className="right-dash-bar">
-              <h1>Loading...</h1>  
-               <i className="fas fa-download"></i>
-               <h2>Loading...</h2>
-               <h3>Loading...</h3>
-               <h4>Loading...</h4>
-            </div>
-            <div className="right-dash-bar">
-              <h1>Loading...</h1> 
-                <i className="far fa-thumbs-up"></i>
-                <h2>Loading...</h2>
-                <h3>Loading...</h3>
-               <h4>Loading...</h4>
-            </div>
-            <div className="right-dash-bar">
-              <h1>Loading...</h1>  
-              <i className="fas fa-cloud-upload-alt"></i>
-              <h2>Loading...</h2>
-              <h3>Loading...</h3>
-               <h4>Loading...</h4>
-            </div>
-            </div>
-
-            <div className="your-uploads">
-            <h1>Loading...</h1>
-    
-            <div className="your-upload-section">
-            <div className="wallpaper-div" style={{ width: '250px', borderRadius: '10px', backgroundColor: '#808080'}}></div>
-            <div className="dashboard-tittle-wallpaper">
-              <h2>Loading...</h2>
-            <h3>Loading...</h3>
-            </div>
-            <div className="dashboard-downloads-wallpaper">      
-            <h2>Loading...</h2>
-            <h3>Loading...</h3>
-            </div>
-            <div className="dashboard-likes-wallpaper">
-            <h2>Loading...</h2>
-            <h3>Loading...</h3>
-            </div>
-            <div className="dashboard-option-wallpaper">
-              <h4>Loading...</h4>
-              <h4>Loading...</h4>
-            <h4>Loading...</h4>
-            </div>
-            </div>
-             
-            </div>
-            </div>
-          </div>
-        </div> */}
          <div className="loader-section">
     <div className="loader"></div>
     </div>
@@ -471,11 +411,21 @@ useEffect(() => {
                   <div className="wallpaper-upload-mini-section">
                     <h1>Upload Wallpaper</h1>
                     <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        upload();
-                      }}
-                    >
+  onSubmit={async (e) => {
+    e.preventDefault();
+
+    // Wait for upload to finish
+    const uploadSuccess = await upload();
+    console.log('Upload result:', uploadSuccess); // Log the result for debugging
+
+    // Set visibility only if the upload was successful
+    if (uploadSuccess) {
+      setIsVisible(true);
+    } else {
+      console.log('Upload failed or returned false');
+    }
+  }}
+>
                       <input
                         type="text"
                         onChange={handleChange}
@@ -483,6 +433,7 @@ useEffect(() => {
                         name="wallpaperName"
                         className="wallpapername"
                         value={formData.wallpaperName}
+                        required
                       />
                       <br />
                       <label htmlFor="imgLink" className="imgLink-btn">
@@ -493,6 +444,7 @@ useEffect(() => {
                         onChange={handleWallpaperChange}
                         name="imgLink"
                         id="imgLink"
+                        required
                       />
                       <br />
                      <br />
@@ -500,7 +452,7 @@ useEffect(() => {
                         name="genre"
                         id="genre"
                         onChange={handleChange}
-                        value={formData.genre}
+                        value={formData.genre}                
                       >
                         <option value="AI">AI</option>
                         <option value="Anime">Anime</option>
@@ -556,7 +508,7 @@ useEffect(() => {
                       <br />
                       <br />
                      
-                      <input type="submit" value="Upload" id='upload-wallpaper-btn' onClick={() => {setIsVisible(true);}} />
+                      <input type="submit" value="Upload" id='upload-wallpaper-btn'/>
                     </form>
                   </div>
                   <img

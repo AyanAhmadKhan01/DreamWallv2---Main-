@@ -79,14 +79,13 @@ const Login = () => {
          <br />
         <Link to={'/signup'}><h3>Register</h3></Link>
         <button type="submit" id='login-btn' disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? 'Loading' : 'Login'}
         </button>
        
       </form>
-     
-      <div className="error-container">
-      {message && <p>{message}</p>} 
-      </div>
+    
+      {message &&  <div className="error-container"><p><i class="fa-solid fa-circle-exclamation"></i> {message}</p></div>} 
+  
     </div>
     </div>
     </div>

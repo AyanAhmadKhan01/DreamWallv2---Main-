@@ -23,6 +23,8 @@ const Dashboard = () => {
     likedBy: '',
   });
 
+
+  const [uploadLoading, setUploadLoading] = useState(false);
   const nameStore =(`${yourUploads.map((wallpaper) => wallpaper.wallpaperName)}`);
 
   const upload = async() => {
@@ -43,17 +45,22 @@ const Dashboard = () => {
     data.append('resolution', formData.resolution);
     data.append('tags', formData.tags);
     data.append('deviceTags', formData.deviceTags);
-    
    try {
     const response = await axios.post(process.env.REACT_APP_UPLOAD_WALLPAPER, data);
     return true
+    setUploadLoading(true)
    } catch(err) {
         console.error(err);
         setError('Error uploading wallpaper');
         return false;
+   } finally {
+    setUploadLoading(false)
    }
   }
 
+  const test = () => {
+    return <p>hi</p>
+  }
 
 
 useEffect(() => {

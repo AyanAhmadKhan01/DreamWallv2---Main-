@@ -301,21 +301,27 @@ const [TopMember, setTopMember] = useState([]);
         <div className="promotion-container">
         <h1>More Works from the <span>Creator of DreamWall</span> </h1>
             <div className="promotion-section">
+              <Link to={'/'}>
                 <div className="promotion-box">
-                  <img src="/img/dashboard-design-chat-social-media-600nw-1993874387.webp" alt="" />
-                    <h2>Chatting App <i className="fab fa-rocketchat"></i></h2>
-                    <p>Stay connected effortlessly with our chatting app – a fast, secure, and intuitive platform designed to bring people closer. Whether you’re sharing quick updates, meaningful conversations, or just staying in touch, our app makes communication seamless and enjoyable. With real-time messaging, customizable features, and end-to-end encryption, you can chat your way with peace of mind.</p>
+                  <img src="https://res.cloudinary.com/dt5qoqw6u/image/upload/v1751288371/nrdtax7jdqcvhwde0xiu.png" alt="" />
+                    <h2>Mess Management <i className="fab fa-rocketchat"></i></h2>
+                   <p>Efficiently handle daily canteen operations with our Mess Management System — designed for hostels, colleges, and institutions. From student registration and meal scheduling to attendance tracking and payment management, the system simplifies it all in one place. Ensure transparency, reduce food wastage, and streamline mess administration with a user-friendly and automated solution.</p>
                 </div>
+                </Link>
+                 <Link to={'https://devlegend.vercel.app'}>
                 <div className="promotion-box">
-                <img src="/img\415db7bbb6dd2758d22d52fe06e06a07.webp" alt="" />
-                    <h2>Portfolio <i className="fas fa-briefcase"></i></h2>
-                    <p>Welcome to my portfolio! I’m a dedicated MERN stack developer, specializing in building dynamic and user-centric web applications. From designing intuitive interfaces to developing powerful backends, I focus on creating seamless digital experiences. Explore my work to see how I transform ideas into functional, visually appealing solutions with clean code and innovative approaches.</p>
+                <img className='portfolio-img' src="https://res.cloudinary.com/dt5qoqw6u/image/upload/v1751410304/jgwdf324r8kujqiyci1h.png" alt="" />
+                   <h2>Portfolio <i className="fas fa-briefcase"></i></h2>
+<p>Welcome to my portfolio! I’m a passionate MERN stack developer focused on building dynamic, user-centric web applications. From crafting intuitive interfaces to developing robust backend systems, I strive to deliver seamless digital experiences. Explore my work to see how I turn ideas into clean, scalable, and visually compelling solutions using modern development practices.</p>
                 </div>
+                </Link>
+                <Link to={'https://levelcard.vercel.app'}>
                 <div className="promotion-box">
-                  <img src="/img/jRJKWa-800.jpg"/>
-                    <h2>Soon! <i className="far fa-gem"></i></h2>
-                    <p>Exciting things are coming soon! Stay tuned for something new and innovative—I'm working on a project that will bring fresh, seamless experiences to the web. Keep an eye out for updates and get ready for something special!</p>
+                  <img src="https://res.cloudinary.com/dt5qoqw6u/image/upload/v1748003658/aabeefcnbg3iphuce1fe.png"/>
+                    <h2>Portfolio Builder <i className="far fa-gem"></i></h2>
+                  <p>Level Card is a sleek, no-code portfolio builder designed for developers and creatives who want to showcase their work without writing a single line of code. Featuring drag-and-drop customization, real-time previews, and modern UI templates, it empowers users to build professional portfolios in minutes. Whether you're a beginner or a pro, Level Card makes personal branding effortless and elegant.</p>
                 </div>
+                </Link>
             </div>
         </div>
         </>

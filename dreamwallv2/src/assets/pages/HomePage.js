@@ -298,7 +298,7 @@ const [TopMember, setTopMember] = useState([]);
   function Promotion() {
     return(
         <>
-        <div className="promotion-container">
+        {/* <div className="promotion-container">
         <h1>More Works from the <span>Creator of DreamWall</span> </h1>
             <div className="promotion-section">
               <Link to={'/'}>
@@ -323,7 +323,7 @@ const [TopMember, setTopMember] = useState([]);
                 </div>
                 </Link>
             </div>
-        </div>
+        </div> */}
         </>
     )
   }

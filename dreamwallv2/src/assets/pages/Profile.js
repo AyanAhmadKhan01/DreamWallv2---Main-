@@ -39,11 +39,6 @@ function Profile() {
   }, [])
 
 
-
-
-
-  
-
   
   useEffect(() => {
     const fetchProfile = async () => {

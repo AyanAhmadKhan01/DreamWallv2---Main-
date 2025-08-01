@@ -19,6 +19,13 @@
 
 DreamWall V2 is a modern wallpaper sharing platform built with React.js and Node.js. Users can upload, discover, and share high-quality wallpapers with real-time analytics and social features.
 
+## 👥 Contributors
+
+| Name            | Contributions                                                                 |
+|-----------------|--------------------------------------------------------------------------------|
+| **Anas Najam**  | Built the **entire backend**, managed **API development**, created project **documentation**, and implemented the **Community section** (likes, comments, interactions). |
+| **Ayan Ahmad Khan** | Designed the **Frontend UI**, handled **Authentication**, **Landing Page**, **SEO**, and took care of **Deployment**. |
+
 **Live Demo**: [https://dreamwallv2.vercel.app](https://dreamwallv2.vercel.app)
 
 ## ✨ Features
